@@ -1,24 +1,28 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App Clement, Shi Qi"/>
+    <google-map />
+    <!--HomePage /-->
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import GoogleMap from './components/GoogleMap.vue'
+//import HomePage from './components/HomePage.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    GoogleMap,
+    //HomePage
   }
 }
 </script>
 
 <style>
+@import url('https://fonts.googleapis.com/css?family=Righteous');
+
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: Righteous, Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
