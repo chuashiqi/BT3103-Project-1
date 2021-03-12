@@ -1,19 +1,14 @@
 <template>
   <div id="app">
-    <google-map />
-    <!--HomePage /-->
+      <router-view />
   </div>
 </template>
 
 <script>
-import GoogleMap from './components/GoogleMap.vue'
-//import HomePage from './components/HomePage.vue'
 
 export default {
   name: 'App',
   components: {
-    GoogleMap,
-    //HomePage
   }
 }
 </script>
