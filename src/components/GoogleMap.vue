@@ -1,5 +1,6 @@
 <template>
     <div id = "container">
+        <Header />
         <div class = "map">
             <h3> Check for recycling points near you! </h3>
             <gmap-map class = "map" :center="center" :zoom="12" style="width:100%;  height: 500px;">
@@ -63,6 +64,7 @@
 <script>
 // https://www.digitalocean.com/community/tutorials/vuejs-vue-google-maps
 import database from "../firebase.js"
+import Header from './Header.vue'
 
 export default {
     name: "GoogleMap",
@@ -83,6 +85,10 @@ export default {
             }, 
             selectValue: ""
         }
+    },
+
+    components: {
+        Header
     },
 
     mounted() {

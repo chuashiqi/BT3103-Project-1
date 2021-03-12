@@ -1,11 +1,10 @@
 <template>
     <div>
+        <Header />
         <transition-group name="fade" tag="div">
             <div v-for="i in [currentIndex]" :key="i">
                 <div class = "container">
                     <img :src="currentImg" />
-                    <p class = "center"> {{currentTextInImg}} </p>
-                    
                 </div>
                 <p> {{currentText}} </p>
             </div>
@@ -17,6 +16,7 @@
 
 <script>
 // https://www.digitalocean.com/community/tutorials/vuejs-create-image-slider 
+import Header from './Header.vue'
 
 export default {
     name: "Slider",
@@ -45,8 +45,8 @@ export default {
 
     created: function() {
         console.log("created()");
-        this.texts.push("Hello " + this.name + "!" + "\n" + "You have recycled " + this.numRecycled + " bottles today." + "\n" + this.numToGoOrca() + " more to save an Orca");
-        this.texts.push("Hello " + this.name + "!" + "\n" + "You have recycled " + this.numRecycled + " bottles today." + "\n" + this.numToGoPlastic() + " more to reduce climate change effect by 13%");
+        this.texts.push("Hello " + this.name + "!" + "\n" + "You have recycled " + this.numRecycled + " bottles today." + "\n" + this.numToGoOrca() + " more to save an Orca!");
+        this.texts.push("Hello " + this.name + "!" + "\n" + "You have recycled " + this.numRecycled + " bottles today." + "\n" + this.numToGoPlastic() + " more to reduce climate change effect by 13%!");
     },
 
     mounted: function() {
@@ -83,6 +83,10 @@ export default {
         currentTextInImg: function() {
             return this.images[Math.abs(this.currentIndex) % this.images.length]["textInImage"];
         }
+    }, 
+
+    components: {
+        Header
     }
 };
 </script>
@@ -92,7 +96,7 @@ export default {
 
 p {
     font-family: Righteous;
-    font-size: 50px;
+    font-size: 30px;
 }
 
 .fade-enter-active,
