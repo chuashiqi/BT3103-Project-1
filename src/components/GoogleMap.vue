@@ -47,7 +47,7 @@
                     <li> FairPrice, Jurong Point </li>
                     <li> FairPrice Xtra, JEM </li>
                     <li> FairPrice, Lot 1 Shoppers' Mall </li>
-                    <li> FairPrice Finest, Bukit Panjang </li>
+                    <li> FairPrice Finest, Bukit Panjang Plaza</li>
                 </ul>
             </p>
             <p v-if= "selectValue === 'e'">
@@ -74,7 +74,8 @@ export default {
             currentPlace: null, 
             locations: [], 
             infoPosition: null,
-            infoContent: null,
+            infoName: null,
+            infoAddress: null,
             infoOpened: false,
             infoCurrentKey: null,
             infoOptions: {
@@ -121,7 +122,7 @@ export default {
         },
         toggleInfo: function(marker, key) {
             this.infoPosition = this.getPosition(marker)
-            this.infoContent = marker.name
+            this.infoContent = marker.name + ", Address: " + marker.address
             if (this.infoCurrentKey == key) {
                 this.infoOpened = !this.infoOpened
             } else {
@@ -139,6 +140,7 @@ export default {
                     var geoPoint = doc.data().position
                     loc.position.lat = geoPoint.latitude
                     loc.position.lng = geoPoint.longitude
+                    loc.address = doc.data().address
                     this.locations.push(loc)
                 })
             })
