@@ -5,7 +5,7 @@ import VueRouter from 'vue-router'
 
 Vue.use(VueGoogleMaps, {
   load: {
-    key: "AIzaSyCIDHnPjZ2zGjONtpVdRN4xsEjcD5ye5Zs",
+    key: GOOGLE_MAPS_KEY,
     libraries: "places" // necessary for places input
   }
 });
