@@ -25,6 +25,7 @@ import database from "../firebase.js"
 export default {
     name: "BottleInput",
     data() {
+        return {
             brandVal: "",
             brandEnter: false,
             itemVal: "",
