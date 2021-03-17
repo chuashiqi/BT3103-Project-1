@@ -84,7 +84,8 @@ export default {
                     height: -35
                 }
             }, 
-            selectValue: ""
+            selectValue: "", 
+            infoContent: ""
         }
     },
 

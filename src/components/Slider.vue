@@ -34,12 +34,14 @@ export default {
             ],
             texts: [
             ],
+            timer: null,
+            currentIndex: 0,
+            // all retrived from database
             name: "Clement",
             numRecycled: 3,
             numRequiredOrca: 4,
             numRequiredPlastic: 5,
-            timer: null,
-            currentIndex: 0
+
         };
     },
 
