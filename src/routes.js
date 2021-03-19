@@ -1,3 +1,4 @@
+import Landing from "./components/Landing.vue"
 import Slider from "./components/Slider.vue"
 import GoogleMap from "./components/GoogleMap.vue"
 import RewardsPage from "./components/RewardsPage.vue"
@@ -13,7 +14,8 @@ import Success from "./components/Success.vue"
 import Failure from "./components/Failure.vue"
 
 export default [
-    {path: "/", component: Slider},
+    {path: "/", component: Landing},
+    {path: "/home", component: Slider},
     {path: "/locator", component: GoogleMap},
     {path: "/rewardsPage", component: RewardsPage},
     {path: "/rewardsHistory", component: RewardsHistory}, 
