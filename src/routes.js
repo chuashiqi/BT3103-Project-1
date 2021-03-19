@@ -7,6 +7,10 @@ import RedeemSuccess from "./components/RedeemSuccess.vue"
 import BottleInput from "./components/BottleInput.vue"
 import Recyclable from "./components/Recyclable.vue"
 import Unrecyclable from "./components/Unrecyclable.vue"
+import FAQ from "./components/FAQ.vue"
+import QuizPage from "./components/QuizPage.vue"
+import Success from "./components/Success.vue"
+import Failure from "./components/Failure.vue"
 
 export default [
     {path: "/", component: Slider},
@@ -18,4 +22,8 @@ export default [
     {path: "/bottleInput", component: BottleInput},
     {path: "/recyclable", component: Recyclable},
     {path: "/unrecyclable", component: Unrecyclable},
+    {path: "/FAQ", component: FAQ},
+    {path: "/success", component: Success},
+    {path: "/failure", component: Failure},
+    {path: "/quizPage", component: QuizPage},
 ]
