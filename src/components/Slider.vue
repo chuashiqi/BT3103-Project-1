@@ -6,17 +6,23 @@
                 <div class = "container">
                     <img :src="currentImg" />
                 </div>
-                <p> {{currentText}} </p>
+                <p> 
+                    Hello {{name}}!
+                    You have recycled {{recycledToday.length}} bottles today.
+                    <span v-if = "currentImgName === 'orca'">{{numToGoOrca()}} more to save an Orca!</span>
+                    <span v-if = "currentImgName === 'plastic'">{{numToGoPlastic()}} more to reduce climate change effect by 13%!</span>
+                </p>
             </div>
         </transition-group>
-        <!--a class="prev" @click="prev" href="#">&#10094; Previous</a-->
-        <!--a class="next" @click="next" href="#">&#10095; Next</a-->
+        <a class="prev" @click="prev" href="#">&#10094; Previous</a>
+        <a class="next" @click="next" href="#">&#10095; Next</a>
     </div>
 </template>
 
 <script>
 // https://www.digitalocean.com/community/tutorials/vuejs-create-image-slider 
 import Header from './Header.vue'
+import database from "../firebase.js"
 
 export default {
     name: "Slider",
@@ -26,53 +32,84 @@ export default {
                 {
                     img: "https://i.imgur.com/mCIs5yY.png", 
                     textInImage: "Many of us beached and found dead with plastic waste in out stomachs",
+                    name: "orca"
                 },
                 {
                     img: "https://i.imgur.com/xJCTjP1.png", 
-                    textInImage: "Plastic Waste releases methane and ethylene which exacerbates climate change"
+                    textInImage: "Plastic Waste releases methane and ethylene which exacerbates climate change", 
+                    name: "plastic"
                 }
             ],
-            texts: [
-            ],
+            texts: [],
             timer: null,
             currentIndex: 0,
-            // all retrived from database
-            name: "Clement",
-            numRecycled: 3,
             numRequiredOrca: 4,
             numRequiredPlastic: 5,
-
+            // passed down as props
+            name: "clement", 
+            // retrived from database
+            user: [], 
+            recycledToday: [], 
         };
     },
 
-    created: function() {
-        console.log("created()");
-        this.texts.push("Hello " + this.name + "!" + "\n" + "You have recycled " + this.numRecycled + " bottles today." + "\n" + this.numToGoOrca() + " more to save an Orca!");
-        this.texts.push("Hello " + this.name + "!" + "\n" + "You have recycled " + this.numRecycled + " bottles today." + "\n" + this.numToGoPlastic() + " more to reduce climate change effect by 13%!");
+    created() {
+        this.fetchUserInfo();
     },
 
-    mounted: function() {
-        console.log(this.texts);
+    mounted() {
         this.startSlide();
     },
 
     methods: {
         startSlide: function() {
-        this.timer = setInterval(this.next, 10000);
+            this.timer = setInterval(this.next, 8000);
         },
-
         next: function() {
-        this.currentIndex += 1;
+            this.currentIndex += 1;
         },
         prev: function() {
-        this.currentIndex -= 1;
+            this.currentIndex -= 1;
         }, 
         numToGoOrca: function() {
-            return this.numRequiredOrca - this.numRecycled;
+            return this.numRequiredOrca - this.recycledToday.length;
         },
         numToGoPlastic: function() {
-            return this.numRequiredPlastic - this.numRecycled;
+            return this.numRequiredPlastic - this.recycledToday.length;
+        }, 
+  
+        fetchUserInfo: function() {
+            database.collection("users").get().then(snapshot => {
+                let user = {}
+                snapshot.forEach(doc => {
+                    user = doc.data()
+                    user.id = doc.id
+                    if (user.username === this.name) {
+                        this.user.push(user)
+                    }
+                })
+            });
+            var query = database.collection("users").where("username", "==", this.name)
+            query.get().then((querySnapshot) => {
+                querySnapshot.forEach((document) => {
+                    document.ref.collection("points").get().then((querySnapshot) => {
+                        var dateToday = new Date();
+                        dateToday.setHours(0, 0, 0, 0)
+                        let item = {}
+                        querySnapshot.forEach(doc => {
+                            item = doc.data()
+                            item.id = doc.id
+                            var itemDate = item.date.toDate()
+                            itemDate.setHours(0, 0, 0, 0)
+                            if (itemDate.valueOf() === dateToday.valueOf()) {
+                                this.recycledToday.push(item)
+                            }
+                        })
+                    });
+                });
+            });
         }
+        
     },
 
     computed: {
@@ -82,6 +119,9 @@ export default {
         currentText: function() {
             return this.texts[Math.abs(this.currentIndex) % this.texts.length]
         }, 
+        currentImgName: function() {
+            return this.images[Math.abs(this.currentIndex) % this.images.length]["name"];
+        },
         currentTextInImg: function() {
             return this.images[Math.abs(this.currentIndex) % this.images.length]["textInImage"];
         }
@@ -89,7 +129,7 @@ export default {
 
     components: {
         Header
-    }
+    }, 
 };
 </script>
 
@@ -120,13 +160,13 @@ p {
 
 img {
   height:600px;
-  width:100%
+  width:100%;
 }
 
 .prev, .next {
   cursor: pointer;
   position: absolute;
-  top: 40%;
+  top: 90%;
   width: auto;
   padding: 16px;
   color: white;

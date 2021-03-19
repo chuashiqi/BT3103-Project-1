@@ -10,7 +10,7 @@
                 <td>Voucher Status</td>
             </tr>
             <tr v-for = "voucher in vouchers" v-bind:key = "voucher.index">
-                <td>{{voucher.date}}</td>
+                <td> {{voucher.date.toDate().getDate()}} / {{voucher.date.toDate().getMonth() + 1}} / {{voucher.date.toDate().getFullYear()}} </td>
                 <td>{{voucher.value}}</td>
                 <td>{{voucher.status}}</td>
             </tr>
@@ -21,29 +21,36 @@
 
 <script>
 import Header from './Header.vue'
+import database from "../firebase.js"
 
 export default {
-    name: "RedeemSuccess",
+    name: "RewardHistory",
     data() {
         return {
+            name: "clement", //passed down as props
             // all retrieved from database
-            name: "Clement",
-            availablePoints: 0, 
-            vouchers: [
-                {
-                    value: 1,
-                    date: new Date(),
-                    status: "unused"
-                }, 
-                {
-                    value: 5,
-                    date: new Date(),
-                    status: "used"
-                }
-            ], 
+            vouchers: []
         };
     },
     methods: {
+        fetchVouchers: function() {
+            var query = database.collection("users").where("username", "==", this.name)
+            query.get().then((querySnapshot) => {
+                querySnapshot.forEach((document) => {
+                    document.ref.collection("vouchers").get().then((querySnapshot) => {
+                        let voucher = {}
+                        querySnapshot.forEach(doc => {
+                            voucher = doc.data()
+                            voucher.id = doc.id
+                            this.vouchers.push(voucher)
+                        })
+                    });
+                });
+            });
+            this.vouchers.sort(function(a,b){
+                return b.date - a.date;
+            });
+        },
 
     },
     components: {
@@ -51,6 +58,7 @@ export default {
     }, 
     created() {
         // retrive data from database
+        this.fetchVouchers();
     }
 };
 </script>
@@ -67,5 +75,11 @@ h2 {
 
 table {
     padding: 30px;
+}
+
+td {
+    padding: 2px;
+    padding-left: 10px;
+    scroll-padding-right: 10px;
 }
 </style>
