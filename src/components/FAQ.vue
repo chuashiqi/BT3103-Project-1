@@ -1,29 +1,31 @@
 <template>
-<div id='faq'>
-  <p v-html='name'></p>
-</div>
+<div>
+    <div id='faq'>
+    <p v-html='name'></p>
+    </div>
 
-<div id='faqleft'>
-  <p> {{q1}} </p>
-  <p> {{ans1}} </p>
-  <p>
-    <img src="https://www.ats-tanner.com/Marketing/News/image-thumb__6950__contentImage/Recycling-Codes.png">
-  </p>
-  <p>{{link1}}</p>
-  
-  <br></br>
-  <p> {{q2}} </p>
-  <p> {{ans2}} </p>
-  </div>
+    <div id='faqleft'>
+    <p> {{q1}} </p>
+    <p> {{ans1}} </p>
+    <p>
+        <img src="https://www.ats-tanner.com/Marketing/News/image-thumb__6950__contentImage/Recycling-Codes.png">
+    </p>
+    <p>{{link1}}</p>
+    
+    <br>
+    <p> {{q2}} </p>
+    <p> {{ans2}} </p>
+    </div>
 
-<div id='faqright'>
-  <br></br>
-  <p> {{q3}} </p>
-  <p> {{ans3}} </p>
+    <div id='faqright'>
+    <br>
+    <p> {{q3}} </p>
+    <p> {{ans3}} </p>
 
-  <br></br>
-  <p> {{q4}} </p>
-  <p> {{ans4}} </p>
+    <br>
+    <p> {{q4}} </p>
+    <p> {{ans4}} </p>
+    </div>
 </div>
 </template>
 

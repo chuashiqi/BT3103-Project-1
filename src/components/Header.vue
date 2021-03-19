@@ -2,9 +2,9 @@
     <div class="head">
         <router-link to = "/home" exact>Home</router-link>
         <router-link to = "/locator" exact>Locator</router-link>
-        <router-link to = "/" exact>Information</router-link>
+        <router-link to = "/FAQ" exact>Information</router-link>
         <router-link to = "/rewardsPage" exact>Rewards</router-link>
-        <router-link to = "/" exact>Quiz</router-link>
+        <router-link to = "/quizPage" exact>Quiz</router-link>
         <router-link to = "/BottleInput" exact>Bottle Input</router-link>
         <div class="header-right">
             <router-link to = "/" exact>My Account</router-link>
