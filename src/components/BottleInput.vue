@@ -2,10 +2,11 @@
     <div>
         <Header />
         <p>Unsure if your item can be recycled? <br>
-        Click here! </p>
+        Check here! </p>
         
         <label for = "brand">Brand (e.g. Pokka)</label> <br>
         <input type = "text" name = "brand" id = "brand" v-model.lazy.trim = "brandVal" />
+        <br>
         <button v-on:click = "brandEntered">Enter</button><br> <br>
 
         <label for = "name" v-show = "brandEnter">Item Name (e.g. Jasmine Green Tea)</label> <br>
@@ -30,7 +31,7 @@ export default {
             brandEnter: false,
             itemVal: "",
             items: [], 
-            bottles: []
+            bottles: [], 
         };
     },
     methods: {
@@ -49,6 +50,9 @@ export default {
             if (this.brandVal === "") {
                 alert("Please enter a brand!")
             } else {
+                if (this.items !== []) {
+                    this.items.length = 0
+                }
                 for (var item of this.bottles) {
                     var brand = item['Brand'].toLowerCase()
                     brand  = brand.replace(/[^a-zA-Z ]/g, "")
@@ -58,7 +62,6 @@ export default {
                         this.items.push(item)
                     }
                 }
-                console.log(this.items)
                 if (this.items.length === 0) {
                     alert("Sorry, this brand is currently not supported!")
                 } else {
@@ -113,5 +116,31 @@ p {
 label {
     font-family: Righteous;
     font-size: 20px;
+}
+
+button {
+    font-family: Righteous;
+    border: 2px solid black ;
+    background-color: white;
+    color: black;
+    padding: 6px 12px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 6px;
+}
+
+input[type=text] {
+  border: 2px solid black;
+  border-radius: 6px;
+  padding: 8px 80px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+
+select {
+  padding: 8px 100px;
+  border: 2px solid black;
+  border-radius: 4px;
+  background-color: white;
 }
 </style>
