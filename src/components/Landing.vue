@@ -1,8 +1,8 @@
 <template>
     <div id="container">
         <p id="bigWords"> RecyclEasy </p>
-        <button id="login"><router-link to = "/home" exact id="loginText">Login</router-link></button>
-        <button id="signup"><router-link to = "/home" exact id="signUpText">Sign Up</router-link></button>
+        <button id="login"><router-link to = "/signin" exact id="loginText">Login</router-link></button>
+        <button id="signup"><router-link to = "/signup" exact id="signUpText">Sign Up</router-link></button>
     </div>
 </template>
 
@@ -18,6 +18,7 @@ export default {
     width: 1440px;
     height: 900px;
 }
+
 /* Styling for the RecyclEasy */
 #bigWords {
     position: absolute;

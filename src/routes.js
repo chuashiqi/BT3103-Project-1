@@ -12,9 +12,13 @@ import FAQ from "./components/FAQ.vue"
 import QuizPage from "./components/QuizPage.vue"
 import Success from "./components/Success.vue"
 import Failure from "./components/Failure.vue"
+import Signup from "./components/signup/Signup.vue"
+import Signin from "./components/signin/Signin.vue"
 
 export default [
     {path: "/", component: Landing},
+    {path: "/signup", component: Signup},
+    {path: "/signin", component: Signin},
     {path: "/home", component: Slider},
     {path: "/locator", component: GoogleMap},
     {path: "/rewardsPage", component: RewardsPage},
