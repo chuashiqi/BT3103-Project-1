@@ -9,7 +9,12 @@
   },
   "dependencies": {
     "core-js": "^3.6.5",
+<<<<<<< HEAD
     "vue": "^2.6.12",
+=======
+    "firebase": "^8.3.0",
+    "vue": "^2.6.11",
+>>>>>>> cb1a75972880cb8debb42907868af7cc2fa40cac
     "vue-router": "^3.5.1",
     "vue2-google-maps": "^0.10.7"
   },

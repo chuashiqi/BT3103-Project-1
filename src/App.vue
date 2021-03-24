@@ -7,11 +7,11 @@
 </template>
 
 <script>
-import Slider from './components/Slider.vue'
+import Slider from './components/BenefitHistory.vue'
 import Header from './components/Header.vue'
 export default {
   name: 'App',
-  components: {Slider, Header
+  components: {Slider, BenefitHistory
 
   }
 }

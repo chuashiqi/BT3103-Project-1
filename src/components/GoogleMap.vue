@@ -12,51 +12,53 @@
         </div>
         <div class = "list">
             <h3> List of Recycling Points </h3>
-            <select name="course" id="course" v-model="selectValue">
-                <option value="ne">North East</option>
-                <option value="n">North</option>
-                <option value="c">Central</option>
-                <option value="w">West</option>
-                <option value="e">East</option>
-            </select>
-            <p v-if= "selectValue === 'ne'">
-                <ul>
-                    <li> FairPrice Finest, Waterway Point </li>
-                    <li> FairPrice, Hougang Mall </li>
-                    <li> FairPrice Finest, The Seletar Mall </li>
-                </ul>
-            </p>
-            <p v-if= "selectValue === 'n'">
-                <ul>
-                    <li> FairPrice, Northpoint City </li>
-                    <li> FairPrice, Marsiling MRT Station </li>
-                    <li> FairPrice Xtra, AMK Hub </li>
-                    <li> FairPrice Finest, Junction 8</li>
-                </ul>
-            </p>
-            <p v-if= "selectValue === 'c'">
-                <ul>
-                    <li> FairPrice Finest, 111 Somerset </li>
-                    <li> FairPrice, Chinatown Point </li>
-                    <li> FairPrice Finest, Funan Mall </li>
-                    <li> FairPrice, City Square Mall</li>
-                </ul>
-            </p>
-            <p v-if= "selectValue === 'w'">
-                <ul>
-                    <li> FairPrice, Jurong Point </li>
-                    <li> FairPrice Xtra, JEM </li>
-                    <li> FairPrice, Lot 1 Shoppers' Mall </li>
-                    <li> FairPrice Finest, Bukit Panjang Plaza</li>
-                </ul>
-            </p>
-            <p v-if= "selectValue === 'e'">
-                <ul>
-                    <li> FairPrice, Whitesands </li>
-                    <li> FairPrice, Tampines Mall </li>
-                    <li> FairPrice Finest, Bedok Mall </li>
-                </ul>
-            </p> 
+            <div class = "select">
+                <select name="course" id="course" v-model="selectValue">
+                    <option value="ne">North East</option>
+                    <option value="n">North</option>
+                    <option value="c">Central</option>
+                    <option value="w">West</option>
+                    <option value="e">East</option>
+                </select>
+                <p v-if= "selectValue === 'ne'">
+                    <ul>
+                        <li> FairPrice Finest, Waterway Point </li>
+                        <li> FairPrice, Hougang Mall </li>
+                        <li> FairPrice Finest, The Seletar Mall </li>
+                    </ul>
+                </p>
+                <p v-if= "selectValue === 'n'">
+                    <ul>
+                        <li> FairPrice, Northpoint City </li>
+                        <li> FairPrice, Marsiling MRT Station </li>
+                        <li> FairPrice Xtra, AMK Hub </li>
+                        <li> FairPrice Finest, Junction 8</li>
+                    </ul>
+                </p>
+                <p v-if= "selectValue === 'c'">
+                    <ul>
+                        <li> FairPrice Finest, 111 Somerset </li>
+                        <li> FairPrice, Chinatown Point </li>
+                        <li> FairPrice Finest, Funan Mall </li>
+                        <li> FairPrice, City Square Mall</li>
+                    </ul>
+                </p>
+                <p v-if= "selectValue === 'w'">
+                    <ul>
+                        <li> FairPrice, Jurong Point </li>
+                        <li> FairPrice Xtra, JEM </li>
+                        <li> FairPrice, Lot 1 Shoppers' Mall </li>
+                        <li> FairPrice Finest, Bukit Panjang Plaza</li>
+                    </ul>
+                </p>
+                <p v-if= "selectValue === 'e'">
+                    <ul>
+                        <li> FairPrice, Whitesands </li>
+                        <li> FairPrice, Tampines Mall </li>
+                        <li> FairPrice Finest, Bedok Mall </li>
+                    </ul>
+                </p> 
+            </div>
         </div>
     </div>
 </template>
@@ -84,7 +86,8 @@ export default {
                     height: -35
                 }
             }, 
-            selectValue: ""
+            selectValue: "", 
+            infoContent: ""
         }
     },
 
@@ -156,20 +159,7 @@ export default {
 h3 {
     font-family: Righteous;
 }
-/*
-#container{
-  height:100%;
-  width:100%;
-  font-size:0;
-  margin:0 auto;
-}
-.map{
-  display:inline-block;
-  vertical-align:top;
-  height:100%;
-  width:50%;
-}
-*/
+
 .map {
     width: 50%;
     float: left;
@@ -178,4 +168,41 @@ h3 {
     width: 50%;
     float: right;
 }
+
+li {
+    font-size: 18px;
+}
+
+.select { 
+    position: relative; 
+    display: block; 
+    width: 25em; 
+    height: 2.8em; 
+    line-height: 3; 
+    background: black; 
+    border-radius: .25em; 
+    margin-left: auto;
+    margin-right: auto;
+} 
+
+select { 
+    width: 100%; 
+    height: 100%; 
+    color: black; 
+    cursor: pointer; 
+    font-family: Righteous;
+    font-size: 20px;
+} 
+
+.select::after { 
+    content: '\25BC'; 
+    position: absolute; 
+    top: 0; 
+    right: 0; 
+    bottom: 0; 
+    padding: 0 1em; 
+    background: #5CAFAA; 
+    pointer-events: none; 
+} 
+
 </style>
