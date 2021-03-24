@@ -11,20 +11,18 @@
         </div>
 
         <tr>
-                <td><button v-on:click = "redeem">Redeem</button></td>
+                <td><button v-on:click =redeem()>Redeem</button></td>
             </tr>
 
         <table>
             <tr>
                 <td>Date</td>
-                <td>Recycled Item</td>
-                <td>Recycling Point</td>
+                <td>Recycling Details</td>
                 <td>No. of Points</td>
             </tr>
-            <tr v-for = "voucher in vouchers" v-bind:key = "voucher.index">
-                <td> {{voucher.date.toDate().getDate()}} / {{voucher.date.toDate().getMonth() + 1}} / {{voucher.date.toDate().getFullYear()}} </td>
-                <td>{{voucher.value}}</td>
-                <td></td>
+            <tr v-for = "point in points" v-bind:key = "point.index">
+                <td> {{point.date.toDate().getDate()}} / {{point.date.toDate().getMonth() + 1}} / {{point.date.toDate().getFullYear()}} </td>
+                <td>{{point.description}}</td>
                 <td>10</td>
             </tr>
         </table>
@@ -33,14 +31,39 @@
 </template>
 
 <script>
-    import Header from './Header.vue'
-    import database from "../firebase.js"
+import Header from './Header.vue'
+import database from "../firebase.js"
 
+export default {
     methods: {
         redeem: function() {
-            
-        }
-    }
+            this.$router.push("redeemRewards");
+        },
+
+        fetchDesc: function() {
+            var query = database.collection("users").where("username", "==", this.name)
+            query.get().then((querySnapshot) => {
+                querySnapshot.forEach((document) => {
+                    document.ref.collection("points").get().then((querySnapshot) => {
+                        let point = {}
+                        querySnapshot.forEach(doc => {
+                            point = doc.data()
+                            point.id = doc.id
+                            this.points.push(point)
+                        })
+                    });
+                });
+            });
+            this.points.sort(function(a,b){
+                return b.date - a.date;
+            });
+        },
+    },
+    
+    components: {
+        Header
+    }, 
+};
     </script>
 
 <style scoped>
@@ -52,16 +75,6 @@ h2 {
 table {
     margin-left: auto;
     margin-right: auto;
-}
-td {
-    padding: 5px;
-}
-.val {
-    font-size: 25px;
-}
-img {
-    width: 150px;
-    padding: 10px;
 }
 .circles {
   display: flex;

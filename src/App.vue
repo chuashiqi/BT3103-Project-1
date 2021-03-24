@@ -1,17 +1,17 @@
 <template>
   <div >
-  <Slider></Slider>
+  <BenefitHistory></BenefitHistory>
   <Header> </Header>
       <router-view />
   </div>
 </template>
 
 <script>
-import Slider from './components/BenefitHistory.vue'
+import BenefitHistory from './components/BenefitHistory.vue'
 import Header from './components/Header.vue'
 export default {
   name: 'App',
-  components: {Slider, BenefitHistory
+  components: {Header, BenefitHistory
 
   }
 }
