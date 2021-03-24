@@ -11,13 +11,13 @@
         <p>
             <img src="https://www.ats-tanner.com/Marketing/News/image-thumb__6950__contentImage/Recycling-Codes.png">
         </p>
-        <p>Still Confused? Check <span v-on:click = "bottleInput">here</span>!</p>
+        <p>Still Confused? <span v-on:click = "bottleInput">Check here!</span></p>
     </div>
 
     <div id='faqright'>
         <br>
         <p> {{q2}} </p>
-        <p> Click <span v-on:click = "locator" >here</span> to find recycling points near you! </p>
+        <p><span v-on:click = "locator" >Click here</span> to find recycling points near you! </p>
 
         <br>
         <p> {{q3}} </p>
@@ -40,7 +40,7 @@ export default {
             q1: "1. Can this be recycled?",
             ans1: "Kindly refer to the chart below. We accept bottles of codes 1, 2, and 5!",
             q2:"2. Where can I go to recycle my bottles?",
-            q3:"3. How do I prep my bottles for recycling?",
+            q3:"3. How do I prepare my bottles for recycling?",
             ans3:"Rinse and dry your bottles thoroughly before bringing them to one of our bottle collecting stations.",
             q4:"4. What if my bottles are not recyclable?",
             ans4:"Kindly dispose of the bottles responsibly in a regular trash recepticle."

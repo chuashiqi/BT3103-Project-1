@@ -30,6 +30,6 @@ export default [
     {path: "/unrecyclable", component: Unrecyclable},
     {path: "/FAQ", component: FAQ},
     {path: "/success", component: Success},
-    {path: "/failure", component: Failure},
+    {path: "/failure", name: "failure", component: Failure, props: true},
     {path: "/quizPage", component: QuizPage},
 ]

@@ -2,7 +2,7 @@
   <div id="failure">
     <Header /><br>
     <img src="../assets/Failure.png">
-    <p>Better luck next time! <br> Click on the FAQ tab to learn more.</p>
+    <p>Better luck next time! <br> The correct answer was {{answer}}. <br> Click on the FAQ tab to learn more.</p>
   </div>
 </template>
 
@@ -19,6 +19,7 @@ export default {
 
     data() {
         return {
+            answer: this.$route.params.answer
         }
     }
 }
