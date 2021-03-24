@@ -12,8 +12,8 @@ import FAQ from "./components/FAQ.vue"
 import QuizPage from "./components/QuizPage.vue"
 import Success from "./components/Success.vue"
 import Failure from "./components/Failure.vue"
-import Signup from "./components/signup/Signup.vue"
-import Signin from "./components/signin/Signin.vue"
+import Signup from "./components/Signup.vue"
+import Signin from "./components/Signin.vue"
 
 export default [
     {path: "/", component: Landing},
