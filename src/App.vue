@@ -1,14 +1,18 @@
 <template>
-  <div id="app">
+  <div >
+  <Slider></Slider>
+  <Header> </Header>
       <router-view />
   </div>
 </template>
 
 <script>
-
+import Slider from './components/Slider.vue'
+import Header from './components/Header.vue'
 export default {
   name: 'App',
-  components: {
+  components: {Slider, Header
+
   }
 }
 </script>
