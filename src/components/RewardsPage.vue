@@ -69,4 +69,9 @@ span {
     font-size: 20px;
 }
 
+div {
+    font-family: Righteous;
+    text-align: center;
+}
+
 </style>

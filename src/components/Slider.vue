@@ -164,6 +164,7 @@ img {
 }
 
 .prev, .next {
+  font-family: Righteous;
   cursor: pointer;
   position: absolute;
   top: 90%;
@@ -202,4 +203,7 @@ img {
   left: 50%;
 }
 
+p {
+    text-align: center;
+}
 </style>

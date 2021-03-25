@@ -12,8 +12,8 @@ import FAQ from "./components/FAQ.vue"
 import QuizPage from "./components/QuizPage.vue"
 import Success from "./components/Success.vue"
 import Failure from "./components/Failure.vue"
-import Signup from "./components/signup/Signup.vue"
-import Signin from "./components/signin/Signin.vue"
+import Signup from "./components/Signup.vue"
+import Signin from "./components/Signin.vue"
 import BenefitHistory from "./components/BenefitHistory.vue"
 
 export default [
@@ -33,5 +33,5 @@ export default [
     {path: "/success", component: Success},
     {path: "/failure", name: "failure", component: Failure, props: true},
     {path: "/quizPage", component: QuizPage},
-    {path: "/BenefitHistory", component: BenefitHistory}
+    {path: "/benefitHistory", component: BenefitHistory}
 ]

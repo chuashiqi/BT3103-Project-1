@@ -1,17 +1,13 @@
 <template>
   <div >
-  <Header> </Header>
       <router-view />
   </div>
 </template>
 
 <script>
-import BenefitHistory from './components/BenefitHistory.vue'
-import Header from './components/Header.vue'
 export default {
   name: 'App',
-  components: {Header, BenefitHistory
-
+  components: {
   }
 }
 </script>

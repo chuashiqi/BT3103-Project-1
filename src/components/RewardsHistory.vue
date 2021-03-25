@@ -82,4 +82,9 @@ td {
     padding-left: 10px;
     scroll-padding-right: 10px;
 }
+
+div {
+    font-family: Righteous;
+    text-align: center;
+}
 </style>

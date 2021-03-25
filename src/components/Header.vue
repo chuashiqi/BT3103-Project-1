@@ -5,6 +5,7 @@
         <router-link to = "/FAQ" exact>FAQ</router-link>
         <router-link to = "/rewardsPage" exact>Rewards</router-link>
         <router-link to = "/quizPage" exact>Quiz</router-link>
+        <router-link to = "/benefitHistory" exact>Benefit History</router-link>
         <div class="header-right">
             <router-link to = "/" exact>My Account</router-link>
         </div>
@@ -25,6 +26,7 @@ export default {
 
 /* Style the header with a grey background and some padding */
 .head {
+  font-family: Righteous;
   overflow: hidden;
   background-color: #5CAFAA;
   padding: 20px 10px;
