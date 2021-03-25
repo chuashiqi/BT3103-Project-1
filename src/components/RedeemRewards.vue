@@ -191,4 +191,9 @@ button {
     cursor: pointer;
     border-radius: 8px;
 }
+
+div {
+    font-family: Righteous;
+    text-align: center;
+}
 </style>
