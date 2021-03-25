@@ -107,4 +107,9 @@ h2 {
     margin-right: auto;
     line-height: 50px;
 }
+
+div {
+    font-family: Righteous;
+    text-align: center;
+}
 </style>

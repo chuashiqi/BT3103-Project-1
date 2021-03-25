@@ -40,4 +40,8 @@ export default {
 img {
     width: 400px;
 }
+
+div {
+  text-align: center;
+}
 </style>

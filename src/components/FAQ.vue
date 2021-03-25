@@ -11,14 +11,13 @@
         <p>
             <img src="https://www.ats-tanner.com/Marketing/News/image-thumb__6950__contentImage/Recycling-Codes.png">
         </p>
-        <p>Still Confused? Check <span v-on:click = "bottleInput">here</span>!</p>
+        <p>Still Confused? <span v-on:click = "bottleInput">Check here</span>!</p>
     </div>
 
     <div id='faqright'>
         <br>
         <p> {{q2}} </p>
-        <p> Click <span v-on:click = "locator" >here</span> to find recycling points near you! </p>
-
+        <p> <span v-on:click = "locator" >Click here</span> to find recycling points near you! </p>
         <br>
         <p> {{q3}} </p>
         <p> {{ans3}} </p>
@@ -44,7 +43,6 @@ export default {
             ans3:"Rinse and dry your bottles thoroughly before bringing them to one of our bottle collecting stations.",
             q4:"4. What if my bottles are not recyclable?",
             ans4:"Kindly dispose of the bottles responsibly in a regular trash recepticle."
-
         };
     },
     methods: {
@@ -66,12 +64,28 @@ export default {
 @import url('https://fonts.googleapis.com/css?family=Righteous');
 
 #faqleft {
+  font-family: Righteous;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: left;
+  color: #000000;
+  margin-top: 60px;
     width: 50%;
     float: left;
     text-align: left;
 }
 
 #faqright {
+  font-family: Righteous;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: left;
+  color: #000000;
+  margin-top: 60px;
     width: 45%;
     float: right;
     text-align: left;

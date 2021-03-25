@@ -37,7 +37,7 @@ export default {
             var query = database.collection("users").where("username", "==", this.name)
             query.get().then((querySnapshot) => {
                 querySnapshot.forEach((document) => {
-                    document.ref.collection("vouchers").get().then((querySnapshot) => {
+                    document.ref.collection("vouchers").orderBy("date", "desc").get().then((querySnapshot) => {
                         let voucher = {}
                         querySnapshot.forEach(doc => {
                             voucher = doc.data()
@@ -46,9 +46,6 @@ export default {
                         })
                     });
                 });
-            });
-            this.vouchers.sort(function(a,b){
-                return b.date - a.date;
             });
         },
 
@@ -81,5 +78,10 @@ td {
     padding: 2px;
     padding-left: 10px;
     scroll-padding-right: 10px;
+}
+
+div {
+    font-family: Righteous;
+    text-align: center;
 }
 </style>

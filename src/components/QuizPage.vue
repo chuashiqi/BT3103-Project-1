@@ -52,7 +52,7 @@ export default {
                 this.$router.push("success")
                 this.increasePoints(); 
             } else {
-                this.$router.push("failure")
+                this.$router.push({name: "failure", params: {answer: "A"}})
             }
         }, 
         fetchUserInfo: function() {
@@ -191,4 +191,9 @@ select::-ms-expand {
 .select:hover::after { 
     color: black; 
 } 
+
+div {
+    font-family: Righteous;
+    text-align: center;
+}
 </style>

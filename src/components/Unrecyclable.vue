@@ -32,4 +32,9 @@ h2 {
     font-family: Righteous;
     font-size: 30px;
 }
+
+div {
+    font-family: Righteous;
+    text-align: center;
+}
 </style>
