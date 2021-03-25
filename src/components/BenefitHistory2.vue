@@ -1,12 +1,10 @@
 <template>
 <div>
         <Header /> <br> <br>
-
-        <v-md-date-range-picker
-        start-date="2021-03-25"
-        end-date="2021-03-25"
-        @change="handleChange"
-        ></v-md-date-range-picker><br>
+        <p>Choose your period</p>
+        <input type="date" id="start" value="2020-07-22" min="2020-01-01" max="2022-12-31" v-model = "startdate">
+        <p style="display:inline"> - </p>
+        <input type="date" id="end" value="2020-07-22" min="2020-01-01" max="2022-12-31" v-model = "enddate"><br>
 
         <div v-show = "show">
 
@@ -43,6 +41,8 @@ export default {
             user: [],
             availablePoints: 0,
             values: [],
+            startdate: new Date(),
+            enddate: new Date(),
             chosen: [],
             show: false,
             name: "clement",  // passed as props
@@ -97,10 +97,26 @@ export default {
     }, 
 
     watch: {
-        values: function() {
+        
+        startdate: function() {
             this.show = true
-            var start = this.values[0].toDate()
-            var end = this.values[1].toDate()
+            var start = new Date(Date.parse(this.startdate))
+            var end = new Date(Date.parse(this.enddate))
+            if (this.chosen !== []) {
+                this.chosen.length = 0
+            }
+            for (var pt of this.points) {
+                var date = pt.date.toDate()
+                if (date.getTime() <= end.getTime() && date.getTime() >= start.getTime()) {
+                    this.chosen.push(pt)
+                }
+            }
+        }, 
+        
+        enddate: function() {
+            this.show = true
+            var start = new Date(Date.parse(this.startdate))
+            var end = new Date(Date.parse(this.enddate))
             if (this.chosen !== []) {
                 this.chosen.length = 0
             }
