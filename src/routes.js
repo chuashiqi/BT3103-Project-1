@@ -15,6 +15,7 @@ import Failure from "./components/Failure.vue"
 import Signup from "./components/Signup.vue"
 import Signin from "./components/Signin.vue"
 import BenefitHistory from "./components/BenefitHistory.vue"
+import BenefitHistory2 from "./components/BenefitHistory2.vue"
 
 export default [
     {path: "/", component: Landing},
@@ -33,5 +34,6 @@ export default [
     {path: "/success", component: Success},
     {path: "/failure", name: "failure", component: Failure, props: true},
     {path: "/quizPage", component: QuizPage},
-    {path: "/benefitHistory", component: BenefitHistory}
+    {path: "/benefitHistory", component: BenefitHistory},
+    {path: "/benefitHistory2", component: BenefitHistory2}
 ]
