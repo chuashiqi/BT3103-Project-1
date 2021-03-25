@@ -1,6 +1,5 @@
 <template>
   <div >
-  <BenefitHistory></BenefitHistory>
   <Header> </Header>
       <router-view />
   </div>
