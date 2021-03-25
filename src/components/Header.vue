@@ -6,7 +6,7 @@
         <router-link to = "/rewardsPage" exact>Rewards</router-link>
         <router-link to = "/quizPage" exact>Quiz</router-link>
         <div class="header-right">
-            <router-link to = "/" exact>My Account</router-link>
+            <router-link to = "/recyclingHistory" exact>My Account</router-link>
         </div>
     </div>
 </template>

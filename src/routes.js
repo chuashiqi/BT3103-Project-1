@@ -14,6 +14,7 @@ import Success from "./components/Success.vue"
 import Failure from "./components/Failure.vue"
 import Signup from "./components/Signup.vue"
 import Signin from "./components/Signin.vue"
+import RecyclingHist from "./components/ProfileRecyclingHist.vue"
 
 export default [
     {path: "/", component: Landing},
@@ -32,4 +33,5 @@ export default [
     {path: "/success", component: Success},
     {path: "/failure", component: Failure},
     {path: "/quizPage", component: QuizPage},
+    {path:"/recyclingHistory", component: RecyclingHist},
 ]
