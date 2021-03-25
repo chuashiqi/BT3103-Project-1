@@ -148,9 +148,6 @@ export default {
             this.plotchart();
         }
     }, 
-    mounted() {
-        this.fillData();
-    }
 };
 </script>
 
