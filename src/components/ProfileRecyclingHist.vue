@@ -13,21 +13,16 @@
         <input type="date" id="end" value="2020-07-22" min="2020-01-01" max="2022-12-31" v-model = "enddate"><br>
         </div>
 
-        {{chartdata.labels}}
-        {{chartdata.datasets[0].data}}
-        <line-chart :chart-data="chartdata"></line-chart>
+        <lineChart :chart-data="chartdata" :options="options" v-if = "entered" ref = "chart"></lineChart>
     </div>
 </template>
 
 <script>
 import Header from './Header.vue'
 import database from "../firebase.js"
-import {Line} from 'vue-chartjs'
-//import lineChart from './lineChart.vue'
 import lineChart from './lineChart.js'
 
 export default {
-    extends:Line, 
     data() {
         return {
             startdate: new Date(),
@@ -35,6 +30,7 @@ export default {
             name: "clement", //passed from props
             availablePoints: 0,
             bottlesRecycled: 0,
+            entered: false,
             months: [],
             amount:[],
             user: [],
@@ -46,16 +42,20 @@ export default {
                     {
                     label: 'Points obtained per day',
                     data:[],
-                    borderWidth:0.5,
-                    borderColor:"magenta",
-                    backgroundColor:'orange',
-                    fill:false
+                    borderColor: ["#5CAFAA"]
                     }
                 ]
             },
             options: {
-            
-            }
+                responsive: true, 
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero:true
+                        }
+                    }]
+                }
+            },
         };
     },
 
@@ -116,7 +116,7 @@ export default {
             for (var d = start; d <= end; d.setDate(d.getDate() + 1)) {
                 var date = new Date(d);
                 date.setHours(0, 0, 0, 0);
-                this.chartdata.labels.push(date)
+                this.chartdata.labels.push(date.toDateString())
 
                 var count = 0
                 for (var item of this.hist) {
@@ -140,18 +140,29 @@ export default {
     }, 
     watch: {
         startdate: function() {
+            if (this.entered === true) {
+                this.entered = false;
+            }
             this.filterdates();
             this.plotchart();
+            this.entered =  true
+            this.$refs.chart.renderLineChart();
+            
         }, 
         enddate: function() {
+            if (this.entered === true) {
+                this.entered = false;
+            }
             this.filterdates();
             this.plotchart();
+            this.entered =  true
+            this.$refs.chart.renderLineChart();
         }
     }, 
 };
 </script>
 
-<style>
+<style scoped>
 #profileInfo {
     text-align:left;
 }
