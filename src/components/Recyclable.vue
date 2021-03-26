@@ -39,4 +39,9 @@ h2 {
 span {
     color: #5CAFAA;
 }
+
+div {
+    font-family: Righteous;
+    text-align: center;
+}
 </style>

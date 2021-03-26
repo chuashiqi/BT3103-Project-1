@@ -167,6 +167,7 @@ h3 {
 .list {
     width: 50%;
     float: right;
+    text-align: center;
 }
 
 li {

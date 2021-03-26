@@ -11,11 +11,11 @@ import Header from './Header.vue'
 
 export default {
     methods: {
-    }, 
+    },
 
     components: {
         Header
-    }, 
+    },
 
     data() {
         return {

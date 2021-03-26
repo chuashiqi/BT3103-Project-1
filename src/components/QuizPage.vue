@@ -191,4 +191,9 @@ select::-ms-expand {
 .select:hover::after { 
     color: black; 
 } 
+
+div {
+    font-family: Righteous;
+    text-align: center;
+}
 </style>

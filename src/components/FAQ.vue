@@ -44,13 +44,12 @@ export default {
             ans3:"Rinse and dry your bottles thoroughly before bringing them to one of our bottle collecting stations.",
             q4:"4. What if my bottles are not recyclable?",
             ans4:"Kindly dispose of the bottles responsibly in a regular trash recepticle."
-
         };
     },
     methods: {
         bottleInput: function() {
             this.$router.push("bottleInput")
-        }, 
+        },
         locator: function() {
             this.$router.push("locator")
         }
@@ -66,12 +65,28 @@ export default {
 @import url('https://fonts.googleapis.com/css?family=Righteous');
 
 #faqleft {
+  font-family: Righteous;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: left;
+  color: #000000;
+  margin-top: 60px;
     width: 50%;
     float: left;
     text-align: left;
 }
 
 #faqright {
+  font-family: Righteous;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: left;
+  color: #000000;
+  margin-top: 60px;
     width: 45%;
     float: right;
     text-align: left;
