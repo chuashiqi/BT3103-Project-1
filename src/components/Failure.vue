@@ -2,7 +2,7 @@
   <div id="failure">
     <Header /><br>
     <img src="../assets/Failure.png">
-    <p>Better luck next time! <br> The correct answer is {{this.$route.params.answer}}. <br> Click on the FAQ tab to learn more.</p>
+    <p>Better luck next time! <br> The correct answer was {{answer}}. <br> Click on the FAQ tab to learn more.</p>
   </div>
 </template>
 
@@ -11,14 +11,15 @@ import Header from './Header.vue'
 
 export default {
     methods: {
-    }, 
+    },
 
     components: {
         Header
-    }, 
+    },
 
     data() {
         return {
+            answer: this.$route.params.answer
         }
     }
 }

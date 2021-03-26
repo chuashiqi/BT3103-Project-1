@@ -117,7 +117,7 @@ export default {
             });
         }, 
         getPosition: function(marker) {
-            console.log(marker.position.lat);
+            //console.log(marker.position.lat);
             return {
                 lat: marker.position.lat,
                 lng: marker.position.lng
@@ -147,7 +147,7 @@ export default {
                     this.locations.push(loc)
                 })
             })
-            console.log(this.locations)
+            //console.log(this.locations)
         }, 
     }
 }
