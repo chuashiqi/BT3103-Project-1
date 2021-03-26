@@ -15,8 +15,8 @@ import Failure from "./components/Failure.vue"
 import Signup from "./components/Signup.vue"
 import Signin from "./components/Signin.vue"
 import RecyclingHist from "./components/ProfileRecyclingHist.vue"
-import BenefitHistory from "./components/BenefitHistory.vue"
 import BenefitHistory2 from "./components/BenefitHistory2.vue"
+//import Profile from "./components/Profile.vue"
 
 export default [
     {path: "/", component: Landing},
@@ -36,6 +36,6 @@ export default [
     {path: "/failure", name: "failure", component: Failure, props: true},
     {path: "/quizPage", component: QuizPage},
     {path:"/recyclingHistory", component: RecyclingHist},
-    {path: "/benefitHistory", component: BenefitHistory},
-    {path: "/benefitHistory2", component: BenefitHistory2}
+    {path: "/benefitHistory2", component: BenefitHistory2},
+    //{path: "/profile", component: Profile}
 ]

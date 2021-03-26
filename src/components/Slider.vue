@@ -8,7 +8,7 @@
                 </div>
                 <p> 
                     Hello {{name}}!
-                    You have recycled {{recycledToday.length}} bottles today.
+                    You have recycled {{recycledToday.length}} bottle(s) today.
                     <span v-if = "currentImgName === 'orca'">{{numToGoOrca()}} more to save an Orca!</span>
                     <span v-if = "currentImgName === 'plastic'">{{numToGoPlastic()}} more to reduce climate change effect by 13%!</span>
                 </p>
@@ -20,7 +20,6 @@
 </template>
 
 <script>
-// https://www.digitalocean.com/community/tutorials/vuejs-create-image-slider 
 import Header from './Header.vue'
 import database from "../firebase.js"
 
