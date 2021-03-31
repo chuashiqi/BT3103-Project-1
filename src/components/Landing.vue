@@ -23,9 +23,10 @@ export default {
 
 .imageContainer {
        width:100%; 
-       height:100%; 
+       height:90%; 
        background-image: url("https://i.imgur.com/m1RxVfb.png");
-       background-size: auto;
+       background-size: 90% 90%;
+       background-repeat: no-repeat;
  }
 
 /* Styling for the RecyclEasy */

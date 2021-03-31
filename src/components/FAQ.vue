@@ -23,6 +23,11 @@
         <br>
         <p> {{q4}} </p>
         <p> {{ans4}} </p>
+
+        <br>
+        <p> {{q5}} </p>
+        <p> {{ans5}} </p>
+
     </div>
 </div>
 </template>
@@ -40,7 +45,9 @@ export default {
             q3:"3. How do I prepare my bottles for recycling?",
             ans3:"Rinse and dry your bottles thoroughly before bringing them to one of our bottle collecting stations.",
             q4:"4. What if my bottles are not recyclable?",
-            ans4:"Kindly dispose of the bottles responsibly in a regular trash recepticle."
+            ans4:"Kindly dispose of the bottles responsibly in a regular trash recepticle.",
+            q5: "5. How is the dropping of the bottles at the recycling points associated with a specific user account?",
+            ans5: "There will be a machine at the recycling point for you to input your username."
         };
     },
     methods: {
