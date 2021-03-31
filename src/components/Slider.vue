@@ -25,6 +25,11 @@ import database from "../firebase.js"
 
 export default {
     name: "Slider",
+    props: {
+        username: {
+            type: String
+        }
+    },
     data() {
         return {
             images: [
@@ -45,7 +50,7 @@ export default {
             numRequiredOrca: 4,
             numRequiredPlastic: 5,
             // passed down as props
-            name: "clement", 
+            name: this.username, 
             // retrived from database
             user: [], 
             recycledToday: [], 

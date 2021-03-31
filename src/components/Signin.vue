@@ -29,7 +29,7 @@ export default {
                     if (user.data().username == this.username) {
                         found = true
                         if (user.data().password == this.password) {
-                            this.$router.push({ path: '/home' })
+                            this.$router.push({ name: 'Slider', params: {username: this.username}})
                         } else {
                             alert("Your password is incorrect, please try again.")
                         }

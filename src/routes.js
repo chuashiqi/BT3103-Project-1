@@ -22,7 +22,7 @@ export default [
     {path: "/", component: Landing},
     {path: "/signup", component: Signup},
     {path: "/signin", component: Signin},
-    {path: "/home", component: Slider},
+    {path: "/home", component: Slider, name: 'Slider', props: true},
     {path: "/locator", component: GoogleMap},
     {path: "/rewardsPage", component: RewardsPage},
     {path: "/rewardsHistory", component: RewardsHistory}, 
