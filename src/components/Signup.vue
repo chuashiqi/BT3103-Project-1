@@ -1,5 +1,8 @@
 <template>
     <div id="container">
+        <div id = "left">
+            <img src = "https://i.imgur.com/xrN5o52.png">
+        </div>
         <p id="signUp">Sign Up</p>
         <p id="username">Username</p>
         <input type="text" name="username" placeholder="Your username" id="usInput" v-model="username"/>
@@ -49,9 +52,11 @@ export default {
 </script>
 
 <style scoped>
-#container {
-    background: url("file:///Users/clementharsoyo/Desktop/Screen%20Shot%202021-03-23%20at%2021.10.20.png");
+img {
+    width:50%;
+    height: 100%;
 }
+
 #signUp {
     position: absolute;
     width: 191px;
@@ -70,8 +75,6 @@ export default {
 
 #username {
     position: absolute;
-    width: 264px;
-    height: 50px;
     left: 62%;
     top: 22%;
     font-family: Righteous;
@@ -98,8 +101,6 @@ export default {
 
 #email {
     position: absolute;
-    width: 264px;
-    height: 50px;
     left: 62%;
     top: 42%;
     font-family: Righteous;
@@ -126,8 +127,6 @@ export default {
 
 #password {
     position: absolute;
-    width: 282px;
-    height: 98px;
     left: 62%;
     top: 60%;
     font-family: Righteous;
