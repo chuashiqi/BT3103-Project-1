@@ -40,10 +40,11 @@ export default {
                 password: this.password,
                 email: this.email,
                 availablePoints: 0,
-                quizCompleted: false
+                quizCompleted: false, 
+                bottlesRecycled: 0,
             })
             db.collection("users").doc(this.username).collection("points").add({})
-            db.collection("users").doc(this.username).collection("points").add({})
+            db.collection("users").doc(this.username).collection("vouchers").add({})
             //To add some validation here
             this.$router.push({ path: '/home' })
         }
