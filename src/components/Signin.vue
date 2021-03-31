@@ -31,12 +31,12 @@ export default {
                         if (user.data().password == this.password) {
                             this.$router.push({ path: '/home' })
                         } else {
-                            alert("Wrong Password")
+                            alert("Your password is incorrect, please try again.")
                         }
                     }
                 })
                 if (found == false) {
-                    alert("Not Registed")
+                    alert("Your account does not exist. Please sign up.")
                 }
             })
         }
