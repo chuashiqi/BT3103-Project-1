@@ -1,8 +1,10 @@
 <template>
     <div id="container">
+        <div class = "imageContainer">
         <p id="bigWords"> RecyclEasy </p>
         <button id="login"><router-link to = "/signin" exact id="loginText">Login</router-link></button>
         <button id="signup"><router-link to = "/signup" exact id="signUpText">Sign Up</router-link></button>
+        </div>
     </div>
 </template>
 
@@ -18,6 +20,13 @@ export default {
     width: 1440px;
     height: 900px;
 }
+
+.imageContainer {
+       width:100%; 
+       height:100%; 
+       background-image: url("https://i.imgur.com/m1RxVfb.png");
+       background-size: auto;
+ }
 
 /* Styling for the RecyclEasy */
 #bigWords {

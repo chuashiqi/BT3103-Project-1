@@ -1,9 +1,12 @@
 <template>
     <div id="container">
+        <div id = "left">
+            <img src = "https://i.imgur.com/9CUCF8A.png">
+        </div>
         <p id="signUp">Sign In</p>
-        <p id="username">Username</p>
+        <p id="username">Username</p><br><br>
         <input type="text" name="username" placeholder="Your username" id="usInput" v-model="username"/>
-        <p id="password">Password</p>
+        <p id="password">Password</p><br><br>
         <input type="password" name="password" placeholder="Your password" id="passwordInput" v-model="password"/>
         <button type="submit" id="signinbutton" v-on:click="checkData"> Sign In </button>
     </div>
@@ -42,9 +45,11 @@ export default {
 </script>
 
 <style scoped>
-#container {
-    background: url("file:///Users/clementharsoyo/Desktop/Screen%20Shot%202021-03-23%20at%2021.10.20.png");
+img {
+    width:50%;
+    height: 100%;
 }
+
 #signUp {
     position: absolute;
     width: 191px;
@@ -63,8 +68,6 @@ export default {
 
 #username {
     position: absolute;
-    width: 264px;
-    height: 50px;
     left: 62%;
     top: 27%;
     font-family: Righteous;
@@ -91,8 +94,6 @@ export default {
 
 #password {
     position: absolute;
-    width: 282px;
-    height: 98px;
     left: 62%;
     top: 48%;
     font-family: Righteous;
