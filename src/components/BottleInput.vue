@@ -110,7 +110,7 @@ p {
     font-family: Righteous;
     font-size: 25px;
     text-align: left;
-    padding: 30px;
+    padding-left: 3%;
 }
 
 label {

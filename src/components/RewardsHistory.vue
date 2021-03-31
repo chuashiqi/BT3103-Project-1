@@ -67,11 +67,11 @@ h2 {
     font-family: Righteous;
     font-size: 30px;
     text-align: left;
-    padding: 30px;
+    margin-left: 2%;
 }
 
 table {
-    padding: 30px;
+    margin-left: 2%;
 }
 
 td {

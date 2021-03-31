@@ -1,11 +1,8 @@
 <template>
 <div>
     <Header />
-    <div id='faq'>
-        <h2>FAQ</h2>
-    </div>
-
     <div id='faqleft'>
+        <h2>FAQ</h2>
         <p> {{q1}} </p>
         <p> {{ans1}} </p>
         <p>
@@ -15,7 +12,7 @@
     </div>
 
     <div id='faqright'>
-        <br>
+        <br><br><br>
         <p> {{q2}} </p>
         <p><span v-on:click = "locator" >Click here</span> to find recycling points near you! </p>
 
@@ -65,28 +62,27 @@ export default {
 @import url('https://fonts.googleapis.com/css?family=Righteous');
 
 #faqleft {
-  font-family: Righteous;
-  font-style: normal;
-  font-weight: normal;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: left;
-  color: #000000;
-  margin-top: 60px;
+    font-family: Righteous;
+    font-style: normal;
+    font-weight: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: left;
+    color: #000000;
     width: 50%;
     float: left;
     text-align: left;
+    margin-left: 2%;
 }
 
 #faqright {
-  font-family: Righteous;
-  font-style: normal;
-  font-weight: normal;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: left;
-  color: #000000;
-  margin-top: 60px;
+    font-family: Righteous;
+    font-style: normal;
+    font-weight: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: left;
+    color: #000000;
     width: 45%;
     float: right;
     text-align: left;
