@@ -77,8 +77,8 @@ export default {
                 snapshot.forEach(doc => {
                     user = doc.data()
                     user.id = doc.id
-                    this.name = user.username
                     if (user.email === email) {
+                        this.name = user.username;
                         this.user.push(user)
                         this.availablePoints = user.availablePoints
                     }

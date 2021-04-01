@@ -10,6 +10,7 @@
 
         <div class="row" id="preview">
             <div class="column" id="recyclingHist">
+                <span style="display:inline-block; width: 10%;"></span>
                 <router-link to = "/recyclingHistory" exact>Your Recycling History</router-link>
                 <br>
                 <br>
@@ -36,14 +37,14 @@
 
 <script>
 import Header from './Header.vue'
-import database from "../firebase.js"
+import firebase from "../firebase.js"
 import lineChart from './lineChart.js'
 
 
 export default {
     data() {
         return {
-            name: "clement",
+            name: "",
             enddate: new Date(),
             startdate: new Date((new Date()).getFullYear(), (new Date()).getMonth() - 1, 1),
             availablePoints: 0,
@@ -79,12 +80,14 @@ export default {
 
     methods: {
         fetchPoints: function() {
-            database.collection("users").get().then(snapshot => {
+            var email = firebase.auth.currentUser.email
+            firebase.database.collection("users").get().then(snapshot => {
                 let user = {}
                 snapshot.forEach(doc => {
                     user = doc.data()
                     user.id = doc.id
-                    if (user.username === this.name) {
+                    if (user.email === email) {
+                        this.name = user.username;
                         this.user.push(user)
                         this.availablePoints = user.availablePoints
                         this.bottlesRecycled = user.bottlesRecycled
@@ -94,7 +97,8 @@ export default {
         },
         //fetch points collection from database
         fetchhist: function() {
-            var query = database.collection("users").where("username", "==", this.name)
+            var email = firebase.auth.currentUser.email
+            var query = firebase.database.collection("users").where("email", "==", email)
             query.get().then((querySnapshot) => 
                 querySnapshot.forEach((document) => {
                     document.ref.collection("points").orderBy("date", "desc").get().then((querySnapshot) => {
@@ -109,7 +113,8 @@ export default {
             )
         },
         fetchvouchers: function() {
-            var query = database.collection("users").where("username", "==", this.name)
+            var email = firebase.auth.currentUser.email
+            var query = firebase.database.collection("users").where("email", "==", email)
             query.get().then((querySnapshot) => 
                 querySnapshot.forEach((document) => {
                     document.ref.collection("vouchers").get().then((querySnapshot) => {
@@ -251,5 +256,13 @@ h2 {
     margin-left: auto;
     margin-right: auto;
     line-height: 50px;
+}
+a:visited, a:link, a:active {
+    text-decoration: none;
+    color: black
+}
+
+a:hover {
+    color: #5CAFAA;
 }
 </style>

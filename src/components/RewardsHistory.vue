@@ -27,7 +27,6 @@ export default {
     name: "RewardHistory",
     data() {
         return {
-            name: "", //passed down as props
             // all retrieved from database
             vouchers: []
         };
