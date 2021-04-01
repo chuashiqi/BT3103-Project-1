@@ -108,13 +108,13 @@ export default {
             if (this.chosen !== []) {
                 this.chosen.length = 0
             }
-            console.log(this.points)
+            //console.log(this.points)
             for (var pt of this.points) {
-                console.log(pt)
+                //console.log(pt)
                 var date = pt.date.toDate()
                 if (date.getTime() <= end.getTime() && date.getTime() >= start.getTime()) {
                     this.chosen.push(pt)
-                    console.log("psuhed")
+                    //console.log("psuhed")
                 }
             }
         }, 
