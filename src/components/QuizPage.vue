@@ -27,7 +27,7 @@
 
 <script>
 import Header from './Header.vue'
-import database from "../firebase.js"
+import firebase from "../firebase.js"
 
 export default {
     data() {
@@ -56,19 +56,21 @@ export default {
             }
         }, 
         fetchUserInfo: function() {
-            database.collection("users").get().then(snapshot => {
+            var email = firebase.auth.currentUser.email
+            firebase.database.collection("users").get().then(snapshot => {
                 let user = {}
                 snapshot.forEach(doc => {
                     user = doc.data()
                     user.id = doc.id
-                    if (user.username === this.username) {
+                    this.username = user.username
+                    if (user.email === email) {
                         this.user.push(user)
                     }
                 })
             })
         }, 
         updateQuizStatus: function() {
-            database.collection("users").doc(this.user[0].id).update({
+            firebase.database.collection("users").doc(this.user[0].id).update({
                 "quizCompleted": true,
             })
             
@@ -77,11 +79,11 @@ export default {
             // update availablePoints field
             var newPoints = this.user[0].availablePoints + 5
             console.log(newPoints)
-            database.collection("users").doc(this.user[0].id).update({
+            firebase.database.collection("users").doc(this.user[0].id).update({
                 "availablePoints": newPoints,
             })
             // update points collection
-            database.collection("users").doc(this.user[0].id).collection("points").add(this.points)
+            firebase.database.collection("users").doc(this.user[0].id).collection("points").add(this.points)
         }
     }, 
 

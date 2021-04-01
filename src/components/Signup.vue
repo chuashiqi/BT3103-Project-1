@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import db from "../firebase.js"
+import firebase from "../firebase.js"
 export default {
     data() {
         return {
@@ -25,6 +25,7 @@ export default {
         }
     },
     methods: {
+        /*
         sendData: function() {
             //Verification
             db.collection("users").get().then(snapshot => {
@@ -63,6 +64,46 @@ export default {
                     alert("Email Used, Username Used")
                 }
             })
+        },
+        */
+        sendData: function() {
+            if (this.username === "") {
+                alert("Please enter your username.")
+            } 
+            if (this.email === "") {
+                alert("Please enter your email.")
+            }
+            if (this.password === "") {
+                alert("Please enter your password.")
+            } else {
+                firebase.auth.createUserWithEmailAndPassword(this.email, this.password).then(u => {
+                    u.user.sendEmailVerification();
+                    firebase.database.collection("users").doc(this.username).set({
+                        username: this.username,
+                        password: this.password,
+                        email: this.email,
+                        availablePoints: 0,
+                        quizCompleted: false, 
+                        bottlesRecycled: 0,
+                    })
+                    firebase.database.collection("users").doc(this.username).collection("points").add({})
+                    firebase.database.collection("users").doc(this.username).collection("vouchers").add({}); 
+                    alert("Succesfully signed up. Please verify email before signing in.")
+                    setTimeout(function() {
+                        location.href = "./";
+                    }, 1000);
+                }).catch(error => {
+                    if (error.code === "auth/invalid-email") {
+                        alert("Please enter a valid email.")
+                    }
+                    if (error.code === "auth/weak-password") {
+                        alert("Please enter a stronger password.")
+                    }
+                    if (error.code === "auth/email-already-in-use") {
+                        alert("This email is already in use.")
+                    }
+                })
+            }
         },
         checkStrength: function(password) {
             var strength = 0;

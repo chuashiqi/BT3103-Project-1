@@ -11,13 +11,15 @@
 
 <script>
 import Header from './Header.vue'
+import firebase from "../firebase.js"
 
 export default {
     name: "RewardsPage",
     data() {
         return {
             // name retrieved from database/ as props from signin page?
-            name: "Clement"
+            name: "", 
+            user: []
         };
     },
     methods: {
@@ -26,11 +28,29 @@ export default {
         }, 
         rewardsHistory: function() {
             this.$router.push("rewardsHistory")
+        }, 
+        fetchUser: function() {
+            var email = firebase.auth.currentUser.email
+            firebase.database.collection("users").get().then(snapshot => {
+                let user = {}
+                snapshot.forEach(doc => {
+                    user = doc.data()
+                    user.id = doc.id
+                    this.name = user.username
+                    if (user.email === email) {
+                        this.user.push(user)
+                    }
+                })
+            });
         }
     },
 
     components: {
         Header
+    }, 
+    created() {
+        // retrive data from database
+        this.fetchUser();
     }
 };
 </script>
