@@ -25,13 +25,6 @@ import firebase from "../firebase.js"
 
 export default {
     name: "Slider",
-    /*
-    props: {
-        username: {
-            type: String
-        }
-    },
-    */
     data() {
         return {
             images: [
@@ -90,8 +83,8 @@ export default {
                 snapshot.forEach(doc => {
                     user = doc.data()
                     user.id = doc.id
-                    this.name = user.username;
                     if (user.email === email) {
+                        this.name = user.username;
                         this.user.push(user)
                     }
                 })
