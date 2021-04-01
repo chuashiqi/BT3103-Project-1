@@ -17,6 +17,7 @@ import Signin from "./components/Signin.vue"
 import RecyclingHist from "./components/ProfileRecyclingHist.vue"
 import BenefitHistory2 from "./components/BenefitHistory2.vue"
 import Profile from "./components/ProfilePage.vue"
+import ForgotPassword from "./components/ForgotPassword.vue"
 
 export default [
     {path: "/", component: Landing},
@@ -37,5 +38,6 @@ export default [
     {path: "/quizPage", component: QuizPage},
     {path:"/recyclingHistory", component: RecyclingHist},
     {path: "/benefitHistory2", component: BenefitHistory2},
-    {path: "/profile", component: Profile}
+    {path: "/profile", component: Profile},
+    {path: "/forgotPassword", component: ForgotPassword}
 ]

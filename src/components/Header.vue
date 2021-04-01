@@ -9,15 +9,30 @@
         <div class="header-right">
             <!--router-link to = "/recyclingHistory" exact>My Account</router-link-->
             <router-link to = "/profile" exact>My Account</router-link>
+            <!--router-link to = "/recyclingHistory" exact>My Account</router-link-->
+            <!--router-link to = "/profile" exact>Profile</router-link-->
+            <router-link @click.native="remove" to = "/" exact>Logout</router-link>
         </div>
     </div>
 </template>
 
 <script>
+import firebase from "../firebase.js"
 export default {
   name: 'header',
   components: {
 
+  }, 
+  methods: {
+      remove: function() {
+        firebase.auth.signOut().then(() => {
+            // Sign-out successful.
+            //alert("signout")
+        }).catch((error) => {
+            // An error happened.
+            alert(error.message)
+        });
+      }
   }
 }
 </script>
