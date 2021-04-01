@@ -31,7 +31,7 @@
 
 <script>
 import Header from './Header.vue'
-import database from "../firebase.js"
+import firebase from "../firebase.js"
 
 export default {
     name: "RedeemRewards",
@@ -47,7 +47,7 @@ export default {
             availablePoints: 0,
             //vouchers: [], 
             user: [],
-            name: "clement", //passed from props
+            name: "", //passed from props
         };
     },
     methods: {
@@ -100,12 +100,14 @@ export default {
             }
         }, 
         fetchPoints: function() {
-            database.collection("users").get().then(snapshot => {
+            var email = firebase.auth.currentUser.email
+            firebase.database.collection("users").get().then(snapshot => {
                 let user = {}
                 snapshot.forEach(doc => {
                     user = doc.data()
                     user.id = doc.id
-                    if (user.username === this.name) {
+                    this.name = user.username
+                    if (user.email === email) {
                         this.user.push(user)
                         this.availablePoints = user.availablePoints
                     }
@@ -114,11 +116,11 @@ export default {
         },
         updateVouchers: function() {
             // add redeemed voucher into database
-            database.collection("users").doc(this.user[0].id).collection("vouchers").add(this.voucher);
+            firebase.database.collection("users").doc(this.user[0].id).collection("vouchers").add(this.voucher);
         }, 
         updateAvailPoints: function() {
             // update available points in database
-            database.collection("users").doc(this.user[0].id).update({
+            firebase.database.collection("users").doc(this.user[0].id).update({
                 "availablePoints": this.availablePoints
             }); 
         }

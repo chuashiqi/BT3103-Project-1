@@ -19,7 +19,7 @@
 
 <script>
 import Header from './Header.vue'
-import database from "../firebase.js"
+import firebase from "../firebase.js"
 import lineChart from './lineChart.js'
 
 export default {
@@ -27,7 +27,7 @@ export default {
         return {
             startdate: new Date(),
             enddate: new Date(),
-            name: "clement", //passed from props
+            name: "", //passed from props
             availablePoints: 0,
             bottlesRecycled: 0,
             entered: false,
@@ -62,12 +62,14 @@ export default {
    
     methods: {
         fetchPoints: function() {
-            database.collection("users").get().then(snapshot => {
+            var email = firebase.auth.currentUser.email
+            firebase.database.collection("users").get().then(snapshot => {
                 let user = {}
                 snapshot.forEach(doc => {
                     user = doc.data()
                     user.id = doc.id
-                    if (user.username === this.name) {
+                    this.name = user.username
+                    if (user.email === email) {
                         this.user.push(user)
                         this.availablePoints = user.availablePoints
                         this.bottlesRecycled = user.bottlesRecycled
@@ -77,7 +79,8 @@ export default {
         },
         //fetch points collection from database
         fetchhist: function() {
-            var query = database.collection("users").where("username", "==", this.name)
+            var email = firebase.auth.currentUser.email
+            var query = firebase.database.collection("users").where("email", "==", email)
             query.get().then((querySnapshot) => 
                 querySnapshot.forEach((document) => {
                     document.ref.collection("points").orderBy("date", "desc").get().then((querySnapshot) => {

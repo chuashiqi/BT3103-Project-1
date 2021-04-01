@@ -18,13 +18,13 @@
 
 <script>
 import Header from './Header.vue'
-import database from "../firebase.js"
+import firebase from "../firebase.js"
 
 export default {
     name: "RedeemSuccess",
     data() {
         return {
-            name: "clement", // passed from props
+            name: "", // passed from props
             // all retrieved from database
             availablePoints: 0, 
             vouchers: [],
@@ -42,18 +42,20 @@ export default {
             return total;
         }, 
         fetchPointsAndVouchers: function() {
-            database.collection("users").get().then(snapshot => {
+            var email = firebase.auth.currentUser.email
+            firebase.database.collection("users").get().then(snapshot => {
                 let user = {}
                 snapshot.forEach(doc => {
                     user = doc.data()
                     user.id = doc.id
-                    if (user.username === this.name) {
+                    this.name = user.username
+                    if (user.email === email) {
                         this.user.push(user)
                         this.availablePoints = user.availablePoints
                     }
                 })
             });
-            var query = database.collection("users").where("username", "==", this.name)
+            var query = firebase.database.collection("users").where("email", "==", email)
             query.get().then((querySnapshot) => {
                 querySnapshot.forEach((document) => {
                     document.ref.collection("vouchers").get().then((querySnapshot) => {

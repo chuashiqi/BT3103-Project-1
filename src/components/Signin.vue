@@ -4,25 +4,46 @@
             <img src = "https://i.imgur.com/9CUCF8A.png">
         </div>
         <p id="signUp">Sign In</p>
-        <p id="username">Username</p><br><br>
-        <input type="text" name="username" placeholder="Your username" id="usInput" v-model="username"/>
+        <!--p id="username">Username</p><br><br>
+        <input type="text" name="username" placeholder="Your username" id="usInput" v-model="username"/-->
+        <p id="email">Email</p><br><br>
+        <input type="text" name="email" placeholder="Your email" id="emailInput" v-model="email"/>
         <p id="password">Password</p><br><br>
         <input type="password" name="password" placeholder="Your password" id="passwordInput" v-model="password"/>
         <button type="submit" id="signinbutton" v-on:click="checkData"> Sign In </button>
+        <!--benefit-history-2 :username="username" /-->
     </div>
 </template>
 
 <script>
-import db from "../firebase.js"
+import firebase from "../firebase.js"
+
 export default {
     data() {
         return {
             username: "",
             password: "",
+            email: "",
         }
     },
     methods: {
         checkData: function() {
+            if (this.email === "" && this.password === "") {
+                alert("Invalid email / password. Please try again.")
+            } else {
+                firebase.auth.signInWithEmailAndPassword(this.email, this.password)
+                .then(() => {
+                    // Signed in
+                    //var user = userCredential.user;
+                    this.$router.push({ name: 'Slider', params: {username: this.username}})
+                })
+                .catch((error) => {
+                    //var errorCode = error.code;
+                    var errorMessage = error.message;
+                    alert(errorMessage)
+                });
+            }
+            /*
             db.collection("users").get().then(snapshot => {
                 var found = false
                 snapshot.docs.forEach(user => {
@@ -39,7 +60,9 @@ export default {
                     alert("Your account does not exist. Please sign up.")
                 }
             })
-        }
+            */
+        }, 
+        
     }
 }
 </script>
@@ -66,7 +89,7 @@ img {
     color: #000000;
 }
 
-#username {
+#email {
     position: absolute;
     left: 62%;
     top: 27%;
@@ -80,7 +103,7 @@ img {
     color: #000000;
 }
 
-#usInput {
+#emailInput {
     position: absolute;
     width: 376px;
     height: 74px;

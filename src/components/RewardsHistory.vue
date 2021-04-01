@@ -21,20 +21,21 @@
 
 <script>
 import Header from './Header.vue'
-import database from "../firebase.js"
+import firebase from "../firebase.js"
 
 export default {
     name: "RewardHistory",
     data() {
         return {
-            name: "clement", //passed down as props
+            name: "", //passed down as props
             // all retrieved from database
             vouchers: []
         };
     },
     methods: {
         fetchVouchers: function() {
-            var query = database.collection("users").where("username", "==", this.name)
+            var email = firebase.auth.currentUser.email
+            var query = firebase.database.collection("users").where("email", "==", email)
             query.get().then((querySnapshot) => {
                 querySnapshot.forEach((document) => {
                     document.ref.collection("vouchers").orderBy("date", "desc").get().then((querySnapshot) => {

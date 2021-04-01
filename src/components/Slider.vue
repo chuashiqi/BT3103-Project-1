@@ -21,15 +21,17 @@
 
 <script>
 import Header from './Header.vue'
-import database from "../firebase.js"
+import firebase from "../firebase.js"
 
 export default {
     name: "Slider",
+    /*
     props: {
         username: {
             type: String
         }
     },
+    */
     data() {
         return {
             images: [
@@ -49,8 +51,7 @@ export default {
             currentIndex: 0,
             numRequiredOrca: 4,
             numRequiredPlastic: 5,
-            // passed down as props
-            name: this.username, 
+            name: "", 
             // retrived from database
             user: [], 
             recycledToday: [], 
@@ -83,17 +84,19 @@ export default {
         }, 
   
         fetchUserInfo: function() {
-            database.collection("users").get().then(snapshot => {
+            var email = firebase.auth.currentUser.email
+            firebase.database.collection("users").get().then(snapshot => {
                 let user = {}
                 snapshot.forEach(doc => {
                     user = doc.data()
                     user.id = doc.id
-                    if (user.username === this.name) {
+                    this.name = user.username;
+                    if (user.email === email) {
                         this.user.push(user)
                     }
                 })
             });
-            var query = database.collection("users").where("username", "==", this.name)
+            var query = firebase.database.collection("users").where("email", "==", email)
             query.get().then((querySnapshot) => {
                 querySnapshot.forEach((document) => {
                     document.ref.collection("points").get().then((querySnapshot) => {

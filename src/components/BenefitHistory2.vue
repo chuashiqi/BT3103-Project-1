@@ -31,7 +31,7 @@
 
 <script>
 import Header from './Header.vue'
-import database from "../firebase.js"
+import firebase from "../firebase.js"
 
 export default {
     name: "Benefit History", 
@@ -45,7 +45,7 @@ export default {
             enddate: new Date(),
             chosen: [],
             show: false,
-            name: "clement",  // passed as props
+            name: "",  // passed as props
         }
     },
     methods: {
@@ -54,7 +54,8 @@ export default {
         },
 
         fetchDesc: function() {
-            var query = database.collection("users").where("username", "==", this.name)
+            var email = firebase.auth.currentUser.email
+            var query = firebase.database.collection("users").where("email", "==", email)
             query.get().then((querySnapshot) => 
                 querySnapshot.forEach((document) => {
                     document.ref.collection("points").orderBy("date", "desc").get().then((querySnapshot) => {
@@ -70,12 +71,14 @@ export default {
         },
 
         fetchPoints: function() {
-            database.collection("users").get().then(snapshot => {
+            var email = firebase.auth.currentUser.email
+            firebase.database.collection("users").get().then(snapshot => {
                 let user = {}
                 snapshot.forEach(doc => {
                     user = doc.data()
                     user.id = doc.id
-                    if (user.username === this.name) {
+                    this.name = user.username
+                    if (user.email === email) {
                         this.user.push(user)
                         this.availablePoints = user.availablePoints
                     }
@@ -105,10 +108,13 @@ export default {
             if (this.chosen !== []) {
                 this.chosen.length = 0
             }
+            console.log(this.points)
             for (var pt of this.points) {
+                console.log(pt)
                 var date = pt.date.toDate()
                 if (date.getTime() <= end.getTime() && date.getTime() >= start.getTime()) {
                     this.chosen.push(pt)
+                    console.log("psuhed")
                 }
             }
         }, 
