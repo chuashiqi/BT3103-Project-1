@@ -20,7 +20,7 @@
             </div>
                 
             <div class="column" id="benefits">
-                <router-link to = "/benefitHistory2" exact>Your Benefits</router-link>
+                <router-link to = "/benefitHistory" exact>Your Benefits</router-link>
                 <br>
                 <br>
                 <div class = "circles">
