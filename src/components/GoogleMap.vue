@@ -65,7 +65,7 @@
 
 <script>
 // https://www.digitalocean.com/community/tutorials/vuejs-vue-google-maps
-import database from "../firebase.js"
+import firebase from "../firebase.js"
 import Header from './Header.vue'
 
 export default {
@@ -134,7 +134,7 @@ export default {
             }
         }, 
         fetchLocations: function() {
-            database.collection("locations").get().then(querySnapShot => {
+            firebase.database.collection("locations").get().then(querySnapShot => {
                 let loc = {}
                 querySnapShot.forEach(doc => {
                     loc = doc.data()
