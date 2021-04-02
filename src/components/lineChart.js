@@ -16,7 +16,6 @@ export default {
     
     watch: {
         chartData: function () {
-            console.log("data changed")
             this._chart.destroy();
             this.renderLineChart();
         },
