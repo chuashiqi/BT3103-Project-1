@@ -64,7 +64,6 @@
 </template>
 
 <script>
-// https://www.digitalocean.com/community/tutorials/vuejs-vue-google-maps
 import firebase from "../firebase.js"
 import Header from './Header.vue'
 
@@ -117,7 +116,6 @@ export default {
             });
         }, 
         getPosition: function(marker) {
-            //console.log(marker.position.lat);
             return {
                 lat: marker.position.lat,
                 lng: marker.position.lng
@@ -147,7 +145,6 @@ export default {
                     this.locations.push(loc)
                 })
             })
-            //console.log(this.locations)
         }, 
     }
 }

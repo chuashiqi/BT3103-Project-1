@@ -46,7 +46,6 @@ export default {
 
     methods: {
         redirect: function() {
-            console.log(this.quizStatus)
             this.updateQuizStatus(); 
             if (this.selectValue == 'A') {
                 this.$router.push("success")
@@ -78,7 +77,6 @@ export default {
         increasePoints: function() {
             // update availablePoints field
             var newPoints = this.user[0].availablePoints + 5
-            console.log(newPoints)
             firebase.database.collection("users").doc(this.user[0].id).update({
                 "availablePoints": newPoints,
             })

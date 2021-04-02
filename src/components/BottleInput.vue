@@ -21,7 +21,7 @@
 
 <script>
 import Header from './Header.vue'
-import database from "../firebase.js"
+import firebase from "../firebase.js"
 
 export default {
     name: "BottleInput",
@@ -36,7 +36,7 @@ export default {
     },
     methods: {
         fetchItems: function() {
-            database.collection("bottles").get().then(querySnapShot => {
+            firebase.database.collection("bottles").get().then(querySnapShot => {
                 let item = {}
                 querySnapShot.forEach(doc => {
                     item = doc.data()
@@ -44,7 +44,6 @@ export default {
                     this.bottles.push(item)
                 })
             })
-            //console.log(this.bottles)
         }, 
         brandEntered: function() {
             if (this.brandVal === "") {
