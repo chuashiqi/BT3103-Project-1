@@ -11,6 +11,8 @@
         <p id="password">Password</p><br><br>
         <input type="password" name="password" placeholder="Your password" id="passwordInput" v-model="password"/>
         <button type="submit" id="signinbutton" v-on:click="checkData"> Sign In </button>
+        <router-link to = "/forgotPassword" exact><p id="forgotPw">Forgot Password?</p></router-link>
+        <router-link to = "/signup" exact><p id="dontHaveAccount">Don't have an account?</p></router-link>
         <!--benefit-history-2 :username="username" /-->
     </div>
 </template>
@@ -78,7 +80,7 @@ img {
     width: 191px;
     height: 185px;
     left: 62%;
-    top: 5%;
+    top: 4%;
     font-family: Righteous;
     font-style: normal;
     font-weight: normal;
@@ -108,7 +110,7 @@ img {
     width: 376px;
     height: 74px;
     left: 62%;
-    top: 39%;
+    top: 41%;
     background: #FFFFFF;
     border: 2px solid #000000;
     box-sizing: border-box;
@@ -157,6 +159,42 @@ img {
     display: flex;
     align-items: center;
     text-align: center;
-
 }
+
+#forgotPw {
+    position: absolute;
+    width: 300px;
+    height: 26px;
+    left: 79%;
+    top: 95%;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 21px;
+    display: flex;
+    align-items: center;
+    text-align: right;
+    text-decoration-line: underline;
+    color: #000000;
+}
+
+#dontHaveAccount {
+    position: absolute;
+    width: 300px;
+    height: 26px;
+    left: 79%;
+    top: 99%;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 21px;
+    display: flex;
+    align-items: center;
+    text-align: right;
+    text-decoration-line: underline;
+    color: #000000;
+}
+
 </style>

@@ -11,6 +11,7 @@
         <p id="password">Password</p>
         <input type="password" name="username" placeholder="Your password" id="passwordInput" v-model="password"/>
         <button type="submit" id="signupbutton" v-on:click="sendData"> Sign Up </button>
+        <router-link to = "/signin" exact><p id="haveAccount">Have an account?</p></router-link>
     </div>
 </template>
 
@@ -245,6 +246,24 @@ img {
     display: flex;
     align-items: center;
     text-align: center;
+}
+
+#haveAccount {
+    position: absolute;
+    width: 300px;
+    height: 26px;
+    left: 81%;
+    top: 95%;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 21px;
+    display: flex;
+    align-items: center;
+    text-align: right;
+    text-decoration-line: underline;
+    color: #000000;
 }
 </style>
 
