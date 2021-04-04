@@ -37,7 +37,6 @@ export default [
     {path: "/failure", name: "failure", component: Failure, props: true},
     {path: "/quizPage", component: QuizPage},
     {path:"/recyclingHistory", component: RecyclingHist},
-    {path: "/benefitHistory2", component: BenefitHistory2},
     {path: "/profile", component: Profile},
     {path: "/benefitHistory", component: BenefitHistory},
     {path: "/forgotPassword", component: ForgotPassword}
