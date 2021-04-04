@@ -77,8 +77,8 @@ export default {
                 snapshot.forEach(doc => {
                     user = doc.data()
                     user.id = doc.id
-                    this.name = user.username
                     if (user.email === email) {
+                        this.name = user.username;
                         this.user.push(user)
                         this.availablePoints = user.availablePoints
                     }
@@ -108,13 +108,10 @@ export default {
             if (this.chosen !== []) {
                 this.chosen.length = 0
             }
-            console.log(this.points)
             for (var pt of this.points) {
-                console.log(pt)
                 var date = pt.date.toDate()
                 if (date.getTime() <= end.getTime() && date.getTime() >= start.getTime()) {
                     this.chosen.push(pt)
-                    console.log("psuhed")
                 }
             }
         }, 

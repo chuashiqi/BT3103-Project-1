@@ -1,20 +1,17 @@
+firebase.auth.sendPasswordResetEmail(this.email).then(function() {
+                // Email sent.
+                alert("Please check your email for password reset.")
+            })
+
 <template>
     <div id="container">
         <div id = "left">
             <img src = "https://i.imgur.com/9CUCF8A.png">
         </div>
-        <p id="signUp">Sign In</p>
-        <!--p id="username">Username</p><br><br>
-        <input type="text" name="username" placeholder="Your username" id="usInput" v-model="username"/-->
+        <p id="signUp">Reset Password</p>
         <p id="email">Email</p><br><br>
         <input type="text" name="email" placeholder="Your email" id="emailInput" v-model="email"/>
-        <p id="password">Password</p><br><br>
-        <input type="password" name="password" placeholder="Your password" id="passwordInput" v-model="password"/>
-        <button type="submit" id="signinbutton" v-on:click="checkData"> Sign In </button>
-        <router-link to = "/forgotPassword" exact><p id="forgotPw">Forgot Password?</p></router-link>
-        <router-link to = "/signup" exact><p id="dontHaveAccount">Don't have an account?</p></router-link>
-        <!--benefit-history-2 :username="username" /-->
-        <p id = "resetpw" v-on:click = "resetPassword">Forgot Password?</p>
+        <button type="submit" id="signinbutton" v-on:click="resetPassword"> Send Email </button>
     </div>
 </template>
 
@@ -24,31 +21,16 @@ import firebase from "../firebase.js"
 export default {
     data() {
         return {
-            username: "",
-            password: "",
             email: "",
         }
     },
     methods: {
-        checkData: function() {
-            if (this.email === "" && this.password === "") {
-                alert("Invalid email / password. Please try again.")
-            } else {
-                firebase.auth.signInWithEmailAndPassword(this.email, this.password)
-                .then(() => {
-                    // Signed in
-                    //var user = userCredential.user;
-                    this.$router.push({ name: 'Slider', params: {username: this.username}})
-                })
-                .catch((error) => {
-                    //var errorCode = error.code;
-                    var errorMessage = error.message;
-                    alert(errorMessage)
-                });
-            }
-        }, 
         resetPassword: function() {
-            this.$router.push("forgotPassword")
+            firebase.auth.sendPasswordResetEmail(this.email).then(function() {
+                // Email sent.
+                alert("Please check your email for password reset.")
+                location.href = "./";
+            })
         }
         
     }
@@ -66,7 +48,7 @@ img {
     width: 191px;
     height: 185px;
     left: 62%;
-    top: 4%;
+    top: 5%;
     font-family: Righteous;
     font-style: normal;
     font-weight: normal;
@@ -80,7 +62,7 @@ img {
 #email {
     position: absolute;
     left: 62%;
-    top: 27%;
+    top: 35%;
     font-family: Righteous;
     font-style: normal;
     font-weight: normal;
@@ -96,7 +78,7 @@ img {
     width: 376px;
     height: 74px;
     left: 62%;
-    top: 41%;
+    top: 50%;
     background: #FFFFFF;
     border: 2px solid #000000;
     box-sizing: border-box;
@@ -160,42 +142,7 @@ img {
     display: flex;
     align-items: center;
     text-align: center;
-}
 
-#forgotPw {
-    position: absolute;
-    width: 300px;
-    height: 26px;
-    left: 79%;
-    top: 95%;
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 18px;
-    line-height: 21px;
-    display: flex;
-    align-items: center;
-    text-align: right;
-    text-decoration-line: underline;
-    color: #000000;
-}
-
-#dontHaveAccount {
-    position: absolute;
-    width: 300px;
-    height: 26px;
-    left: 79%;
-    top: 99%;
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 18px;
-    line-height: 21px;
-    display: flex;
-    align-items: center;
-    text-align: right;
-    text-decoration-line: underline;
-    color: #000000;
 }
 
 </style>

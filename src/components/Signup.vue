@@ -106,6 +106,7 @@ export default {
                 })
             }
         },
+        /*
         checkStrength: function(password) {
             var strength = 0;
             if (password.match(/[a-z]+/)) {
@@ -126,6 +127,7 @@ export default {
                 return false
             }
         }
+        */
     }
 }
 </script>

@@ -13,7 +13,12 @@
         <input type="date" id="end" value="2020-07-22" min="2020-01-01" max="2022-12-31" v-model = "enddate"><br>
         </div>
 
-        <lineChart :chart-data="chartdata" :options="options" v-if = "entered" ref = "chart"></lineChart>
+        <lineChart :styles="chartStyles" :chart-data="chartdata" :options="options" v-if = "entered" ref = "chart"></lineChart>
+
+        <div id="summary">
+        <p>In total, you have recycled {{bottlesRecycled}} bottles and saved {{orcaCount()}} orcas.</p>
+        <p>Keep recycling to save more!</p>
+        </div>
     </div>
 </template>
 
@@ -51,10 +56,17 @@ export default {
                 scales: {
                     yAxes: [{
                         ticks: {
-                            beginAtZero:true
+                            beginAtZero:true,
                         }
                     }]
                 }
+            },
+            chartStyles: {
+                height: '80px',
+                width: '50%',
+                position: 'relative',
+                float: 'right'
+                
             },
         };
     },
@@ -68,8 +80,8 @@ export default {
                 snapshot.forEach(doc => {
                     user = doc.data()
                     user.id = doc.id
-                    this.name = user.username
                     if (user.email === email) {
+                        this.name = user.username;
                         this.user.push(user)
                         this.availablePoints = user.availablePoints
                         this.bottlesRecycled = user.bottlesRecycled
@@ -132,6 +144,11 @@ export default {
                 this.chartdata.datasets[0].data.push(10 * count)
             }
         },
+
+        orcaCount: function() {
+            var orcasSaved = this.bottlesRecycled/5
+            return orcasSaved;
+        }
     },
     components: {
         Header, 
@@ -166,7 +183,17 @@ export default {
 </script>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css?family=Righteous');
+
 #profileInfo {
+    font-family: Righteous;
     text-align:left;
 }
+
+#summary {
+    font-family: Righteous;
+    text-align:left;
+    padding-top: 160px;
+}
+
 </style>
