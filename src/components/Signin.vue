@@ -13,8 +13,6 @@
         <button type="submit" id="signinbutton" v-on:click="checkData"> Sign In </button>
         <router-link to = "/forgotPassword" exact><p id="forgotPw">Forgot Password?</p></router-link>
         <router-link to = "/signup" exact><p id="dontHaveAccount">Don't have an account?</p></router-link>
-        <!--benefit-history-2 :username="username" /-->
-        <p id = "resetpw" v-on:click = "resetPassword">Forgot Password?</p>
     </div>
 </template>
 
@@ -57,7 +55,7 @@ export default {
 
 <style scoped>
 img {
-    width:50%;
+    width:60%;
     height: 100%;
 }
 
@@ -65,8 +63,8 @@ img {
     position: absolute;
     width: 191px;
     height: 185px;
-    left: 62%;
-    top: 4%;
+    left: 65%;
+    top: 2%;
     font-family: Righteous;
     font-style: normal;
     font-weight: normal;
@@ -79,8 +77,8 @@ img {
 
 #email {
     position: absolute;
-    left: 62%;
-    top: 27%;
+    left: 65%;
+    top: 26%;
     font-family: Righteous;
     font-style: normal;
     font-weight: normal;
@@ -95,7 +93,7 @@ img {
     position: absolute;
     width: 376px;
     height: 74px;
-    left: 62%;
+    left: 65%;
     top: 41%;
     background: #FFFFFF;
     border: 2px solid #000000;
@@ -105,7 +103,7 @@ img {
 
 #password {
     position: absolute;
-    left: 62%;
+    left: 65%;
     top: 48%;
     font-family: Righteous;
     font-style: normal;
@@ -121,7 +119,7 @@ img {
     position: absolute;
     width: 376px;
     height: 74px;
-    left: 62%;
+    left: 65%;
     top: 63%;
     background: #FFFFFF;
     border: 2px solid #000000;
@@ -131,8 +129,8 @@ img {
 
 #resetpw {
     position: absolute;
-    left: 80%;
-    top: 94%;
+    left: 85%;
+    top: 90%;
     font-family: Righteous;
     font-style: normal;
     font-weight: normal;
@@ -148,8 +146,8 @@ img {
     position: absolute;
     width: 180px;
     height: 39px;
-    left: 77%;
-    top: 90%;
+    left: 79%;
+    top: 80%;
     background: rgba(46, 202, 193, 0.69);
     border-radius: 10px;
     font-family: Righteous;
@@ -166,8 +164,8 @@ img {
     position: absolute;
     width: 300px;
     height: 26px;
-    left: 79%;
-    top: 95%;
+    left: 83%;
+    top: 87%;
     font-family: Roboto;
     font-style: normal;
     font-weight: 500;
@@ -184,8 +182,8 @@ img {
     position: absolute;
     width: 300px;
     height: 26px;
-    left: 79%;
-    top: 99%;
+    left: 80.3%;
+    top: 92%;
     font-family: Roboto;
     font-style: normal;
     font-weight: 500;
