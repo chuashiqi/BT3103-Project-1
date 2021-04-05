@@ -1,8 +1,3 @@
-firebase.auth.sendPasswordResetEmail(this.email).then(function() {
-                // Email sent.
-                alert("Please check your email for password reset.")
-            })
-
 <template>
     <div id="container">
         <div id = "left">

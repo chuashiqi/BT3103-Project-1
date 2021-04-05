@@ -17,14 +17,14 @@ export default {
 <style scoped>
 #container {
     position: relative;
-    width: 1440px;
-    height: 990px;
+    width: 1250px;
+    height: 600px;
 }
 
 .imageContainer {
     width: 100%;
-    height: 90%;
-    background-image: url("https://i.imgur.com/m1RxVfb.png");
+    height: 100%;
+    background-image: url("https://i.imgur.com/e0q41H8.png");
     background-size: 100% 100%;
     background-repeat: no-repeat;
  }
@@ -53,7 +53,7 @@ export default {
     width: 362px;
     height: 91px;
     left: 10%;
-    top: 50%;
+    top: 65%;
     background: #FFFEFD;
 }
 
@@ -76,7 +76,7 @@ export default {
     width: 362px;
     height: 91px;
     left: 38%;
-    top: 50%;
+    top: 65%;
     background: #106813;
 }
 
