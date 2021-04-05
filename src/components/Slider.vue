@@ -45,7 +45,6 @@ export default {
             numRequiredOrca: 4,
             numRequiredPlastic: 5,
             name: "", 
-            // retrived from database
             user: [], 
             recycledToday: [], 
         };
@@ -101,7 +100,7 @@ export default {
                             item.id = doc.id
                             var itemDate = item.date.toDate()
                             itemDate.setHours(0, 0, 0, 0)
-                            if (itemDate.valueOf() === dateToday.valueOf()) {
+                            if (itemDate.valueOf() === dateToday.valueOf() && item.description !== "Quiz") {
                                 this.recycledToday.push(item)
                             }
                         })

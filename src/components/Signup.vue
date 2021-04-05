@@ -26,47 +26,6 @@ export default {
         }
     },
     methods: {
-        /*
-        sendData: function() {
-            //Verification
-            db.collection("users").get().then(snapshot => {
-                var foundUsername = false
-                var foundEmail = false
-                snapshot.docs.forEach(user => {
-                    if (user.data().username == this.username) {
-                        foundUsername = true
-                    }
-                    if (user.data().email == this.email) {
-                        foundEmail = true
-                    }
-                })
-                var goodPassword = this.checkStrength(this.password)
-                if (foundUsername == false && foundEmail == false) {
-                    if (goodPassword == true) {
-                        db.collection("users").doc(this.username).set({
-                        username: this.username,
-                        password: this.password,
-                        email: this.email,
-                        availablePoints: 0,
-                        quizCompleted: false, 
-                        bottlesRecycled: 0,
-                        })
-                        db.collection("users").doc(this.username).collection("points").add({})
-                        db.collection("users").doc(this.username).collection("vouchers").add({})
-                        this.$router.push({ path: '/home', params: {username: this.username}})
-                    } else {
-                        alert("Password Strength Not Good")
-                    }
-                } else if (foundUsername == true && foundEmail == false){
-                    alert("Username used, Please Choose Other")
-                } else if (foundUsername == false && foundEmail == true){
-                    alert("Email used. Please Choose Other")
-                } else {
-                    alert("Email Used, Username Used")
-                }
-            })
-        },
-        */
         sendData: function() {
             if (this.username === "") {
                 alert("Please enter your username.")
@@ -81,7 +40,6 @@ export default {
                     u.user.sendEmailVerification();
                     firebase.database.collection("users").doc(this.username).set({
                         username: this.username,
-                        password: this.password,
                         email: this.email,
                         availablePoints: 0,
                         quizCompleted: false, 
@@ -106,28 +64,6 @@ export default {
                 })
             }
         },
-        /*
-        checkStrength: function(password) {
-            var strength = 0;
-            if (password.match(/[a-z]+/)) {
-                strength += 1;
-            }
-            if (password.match(/[A-Z]+/)) {
-                strength += 1;
-            }
-            if (password.match(/[0-9]+/)) {
-                strength += 1;
-            }
-            if (password.match(/[$@#&!]+/)) {
-                strength += 1;
-            }
-            if (strength == 4) {
-                return true
-            } else {
-                return false
-            }
-        }
-        */
     }
 }
 </script>

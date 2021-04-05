@@ -27,7 +27,6 @@ export default {
     name: "RewardHistory",
     data() {
         return {
-            // all retrieved from database
             vouchers: []
         };
     },
@@ -54,7 +53,6 @@ export default {
         Header
     }, 
     created() {
-        // retrive data from database
         this.fetchVouchers();
     }
 };

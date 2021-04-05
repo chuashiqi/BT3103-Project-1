@@ -17,7 +17,6 @@ export default {
     name: "RewardsPage",
     data() {
         return {
-            // name retrieved from database/ as props from signin page?
             name: "", 
             user: []
         };
@@ -49,7 +48,6 @@ export default {
         Header
     }, 
     created() {
-        // retrive data from database
         this.fetchUser();
     }
 };

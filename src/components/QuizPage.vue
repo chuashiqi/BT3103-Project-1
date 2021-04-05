@@ -33,7 +33,7 @@ export default {
     data() {
         return {
             selectValue: "", 
-            username: "clement", // will be passed down as props
+            username: "",
             user: [],
             quizStatus: null, 
             points: {
@@ -62,7 +62,7 @@ export default {
                     user = doc.data()
                     user.id = doc.id
                     if (user.email === email) {
-                        this.name = user.username;
+                        this.username = user.username;
                         this.user.push(user)
                     }
                 })
@@ -75,12 +75,10 @@ export default {
             
         },
         increasePoints: function() {
-            // update availablePoints field
             var newPoints = this.user[0].availablePoints + 5
             firebase.database.collection("users").doc(this.user[0].id).update({
                 "availablePoints": newPoints,
             })
-            // update points collection
             firebase.database.collection("users").doc(this.user[0].id).collection("points").add(this.points)
         }
     }, 
