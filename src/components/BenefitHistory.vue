@@ -40,12 +40,11 @@ export default {
             points: [],
             user: [],
             availablePoints: 0,
-            values: [],
             startdate: new Date(),
             enddate: new Date(),
             chosen: [],
             show: false,
-            name: "",  // passed as props
+            name: "",
         }
     },
     methods: {
@@ -85,9 +84,6 @@ export default {
                 })
             });
         },
-        handleChange (values) {
-            this.values = values
-        }
     },
     
     components: {

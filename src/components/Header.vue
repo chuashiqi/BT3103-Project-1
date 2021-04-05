@@ -23,10 +23,7 @@ export default {
   methods: {
       remove: function() {
         firebase.auth.signOut().then(() => {
-            // Sign-out successful.
-            //alert("signout")
         }).catch((error) => {
-            // An error happened.
             alert(error.message)
         });
       }

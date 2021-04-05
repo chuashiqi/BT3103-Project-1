@@ -43,11 +43,9 @@ export default {
                 date: new Date(), 
                 status: "unused"
             },
-            // all retrived from database
             availablePoints: 0,
-            //vouchers: [], 
             user: [],
-            name: "", //passed from props
+            name: "", 
         };
     },
     methods: {
@@ -57,8 +55,7 @@ export default {
             } else {
                 this.availablePoints -= 200;
                 this.voucher.value = 1;
-                //this.vouchers.push(this.voucher);
-                this.updateVouchers(); // push vouchers array back to database
+                this.updateVouchers();
                 this.updateAvailPoints();
                 this.$router.push({name: "redeemSuccess", params: {voucherValue: this.voucher.value}});
             }
@@ -69,8 +66,7 @@ export default {
             } else {
                 this.availablePoints -= 500;
                 this.voucher.value = 3;
-                //this.vouchers.push(this.voucher);
-                this.updateVouchers(); // push vouchers array back to database
+                this.updateVouchers(); 
                 this.updateAvailPoints();
                 this.$router.push({name: "redeemSuccess", params: {voucherValue: this.voucher.value}});
             }
@@ -81,8 +77,7 @@ export default {
             } else {
                 this.availablePoints -= 800;
                 this.voucher.value = 5;
-                //this.vouchers.push(this.voucher);
-                this.updateVouchers(); // push vouchers array back to database
+                this.updateVouchers(); 
                 this.updateAvailPoints();
                 this.$router.push({name: "redeemSuccess", params: {voucherValue: this.voucher.value}});
             }
@@ -93,8 +88,7 @@ export default {
             } else {
                 this.availablePoints -= 1500;
                 this.voucher.value = 10;
-                //this.vouchers.push(this.voucher);
-                this.updateVouchers(); // push vouchers array back to database
+                this.updateVouchers();
                 this.updateAvailPoints();
                 this.$router.push({name: "redeemSuccess", params: {voucherValue: this.voucher.value}});
             }
@@ -115,11 +109,9 @@ export default {
             });
         },
         updateVouchers: function() {
-            // add redeemed voucher into database
             firebase.database.collection("users").doc(this.user[0].id).collection("vouchers").add(this.voucher);
         }, 
         updateAvailPoints: function() {
-            // update available points in database
             firebase.database.collection("users").doc(this.user[0].id).update({
                 "availablePoints": this.availablePoints
             }); 
@@ -129,7 +121,6 @@ export default {
         Header
     }, 
     created() {
-        //retrive points avail from database
         this.fetchPoints();
     }
 };

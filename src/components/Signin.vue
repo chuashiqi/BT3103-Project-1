@@ -34,12 +34,9 @@ export default {
             } else {
                 firebase.auth.signInWithEmailAndPassword(this.email, this.password)
                 .then(() => {
-                    // Signed in
-                    //var user = userCredential.user;
-                    this.$router.push({ name: 'Slider', params: {username: this.username}})
+                    this.$router.push({ name: 'Slider'})
                 })
                 .catch((error) => {
-                    //var errorCode = error.code;
                     var errorMessage = error.message;
                     alert(errorMessage)
                 });

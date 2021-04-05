@@ -32,7 +32,7 @@ export default {
         return {
             startdate: new Date(),
             enddate: new Date(),
-            name: "", //passed from props
+            name: "",
             availablePoints: 0,
             bottlesRecycled: 0,
             entered: false,
@@ -89,7 +89,6 @@ export default {
                 })
             });
         },
-        //fetch points collection from database
         fetchhist: function() {
             var email = firebase.auth.currentUser.email
             var query = firebase.database.collection("users").where("email", "==", email)
@@ -106,7 +105,6 @@ export default {
                 })
             )
         },
-        //filter points collection based on date range provided
         filterdates: function() {
             var start = new Date(Date.parse(this.startdate))
             var end = new Date(Date.parse(this.enddate))
@@ -120,7 +118,6 @@ export default {
                 }
             }
         }, 
-        //make arrays for chart plotting
         plotchart: function() {
             var start = new Date(Date.parse(this.startdate))
             var end = new Date(Date.parse(this.enddate))
