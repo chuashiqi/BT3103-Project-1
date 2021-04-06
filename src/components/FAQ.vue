@@ -56,10 +56,10 @@ export default {
             q4:"4. What if my bottles are not recyclable?",
             ans4:"Kindly dispose of the bottles responsibly in a regular trash recepticle.",
             q5: "5. How is the dropping of the bottles at the recycling points associated with a specific user account?",
-            ans5: "There will be a machine at the recycling point for you to input your username.", 
+            ans5: "There will be a machine at the recycling point for you to input your email and password.", 
             q6: "6. How can I use my redeemed vouchers?",
-            ans6p1: "At Cashiers: Simply inform the cashier at any FairPrice outlet that you would like to use you vouchers from RecyclEasy. You will then have to provide your username to the cashier and request to use a particular voucher.",
-            ans6p2: "At Self-Checkout Counters: Select the option to use RecylEasy's voucher when checking out and input your username. You can then choose which voucher you would like to use.", 
+            ans6p1: "At Cashiers: Simply inform the cashier at any FairPrice outlet that you would like to use you vouchers from RecyclEasy. You will then have to provide your email to the cashier and request to use a particular voucher.",
+            ans6p2: "At Self-Checkout Counters: Select the option to use RecylEasy's voucher when checking out and input your email. You can then choose which voucher you would like to use.", 
             q7: "7. How many vouchers can I use at a time?",
             ans7: "You will only be able to use 1 voucher at a time."
         };
