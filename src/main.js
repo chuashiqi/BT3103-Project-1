@@ -5,7 +5,7 @@ import VueRouter from 'vue-router'
 
 Vue.use(VueGoogleMaps, {
   load: {
-    key:  ${{ secrets.KEYTOKENFORGMAPS }}
+    key:  "secrets.KEYTOKENFORGMAPS",
     libraries: "places" 
   }
 });
