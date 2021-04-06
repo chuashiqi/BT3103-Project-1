@@ -17,8 +17,8 @@ export default {
 <style scoped>
 #container {
     position: relative;
-    width: 1250px;
-    height: 600px;
+    width: 100%;
+    height: 800px;
 }
 
 .imageContainer {
@@ -53,7 +53,7 @@ export default {
     width: 362px;
     height: 91px;
     left: 10%;
-    top: 65%;
+    top: 60%;
     background: #FFFEFD;
 }
 
@@ -76,7 +76,7 @@ export default {
     width: 362px;
     height: 91px;
     left: 38%;
-    top: 65%;
+    top: 60%;
     background: #106813;
 }
 
