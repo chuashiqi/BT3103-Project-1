@@ -168,6 +168,7 @@ h3 {
 
 li {
     font-size: 18px;
+    font-family: Righteous;
 }
 
 .select { 
