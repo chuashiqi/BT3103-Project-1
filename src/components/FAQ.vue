@@ -37,6 +37,10 @@
         <p> {{q7}} </p>
         <p> {{ans7}} </p>
 
+        <br>
+        <p> {{q8}} </p>
+        <p> {{ans8}} </p>
+
     </div>
 </div>
 </template>
@@ -58,10 +62,12 @@ export default {
             q5: "5. How is the dropping of the bottles at the recycling points associated with a specific user account?",
             ans5: "There will be a machine at the recycling point for you to input your username.", 
             q6: "6. How can I use my redeemed vouchers?",
-            ans6p1: "At Cashiers: Simply inform the cashier at any FairPrice outlet that you would like to use you vouchers from RecyclEasy. You will then have to provide your username to the cashier and request to use a particular voucher.",
-            ans6p2: "At Self-Checkout Counters: Select the option to use RecylEasy's voucher when checking out and input your username. You can then choose which voucher you would like to use.", 
+            ans6p1: "At Cashiers: Simply inform the cashier at any FairPrice outlet that you would like to use you vouchers from RecyclEasy. You will then have to provide the voucher code of the voucher that you would like to use.",
+            ans6p2: "At Self-Checkout Counters: Select the option to use RecylEasy's voucher when checking out and input the corresponding voucher code.", 
             q7: "7. How many vouchers can I use at a time?",
-            ans7: "You will only be able to use 1 voucher at a time."
+            ans7: "You will only be able to use 1 voucher at a time.", 
+            q8: "8. Where can I find the voucher code?",
+            ans8: "The voucher code can be found in your Rewards History"
         };
     },
     methods: {
