@@ -1,20 +1,24 @@
 <template>
     <div id="container">
         <h3> Recycling Dashboard </h3>
-        <p> This provides recycling dashboard for your information. It will
-            consist of amount of recycled bottle with each region, in timely manner (bar chart),
-            and daily manner (line chart). Other than that, the dashboard will contain
-            the amount of plastic waste accumulated each year, and besides, the overall temperature
-            on Singapore, to show significance of plastic waste. Lastly, it will provide
-            heatmap for visualisation purpose </p>
-        <div class="chart-container">
+        <p> This provides recycling dashboard for your information. This page 
+            can be used to replace the current profile page, by providing more
+            information and dashboard as additional feature. There will be total of 5 boxes,
+            one is filled with user information (name, id, points), 4 other are graphs (Amount
+            of bottle you recycle daily (top-right), amount of bottle recycled by area,
+            plastic waste recycling to temperature scatter plot, heatmaps of recycling progress)
+        </p>
+        <div>
             <lineChart :chart-data="chartdata" options="options" ref = "chart"></lineChart>
         </div>
         <div class="barchart-container">
             <barChart :chart-data="chartdataBar" options="options" ref = "chart"></barChart>
         </div>
-        <div class="container">
-            <GChart :chart-data="bubbleChartData"></GChart>
+        <div>
+            <scatterChart></scatterChart>
+        </div>
+        <div>
+            <pieChart :chart-data="pieChartData"></pieChart>
         </div>
     </div> 
 </template>
@@ -22,7 +26,8 @@
 <script>
 import lineChart from './lineChart.js'
 import barChart from './barChart.js'
-import { GChart } from "vue-google-charts";
+import scatterChart from './scatterChart.js'
+import pieChart from './pieChart.js'
 export default {
     data() {
         return {
@@ -66,11 +71,19 @@ export default {
                     }
                 ]
             },
-            bubbleChartData: {
-                labels: ["Region", "Recycled Bottle", "Discarded Bottle", "Temperature"],
+            pieChartData: {
+                labels: ["Pokka", "Pepsi", "Water", "Other"],
                 datasets: [
-                    { data: ["West", 80, 167, 120] },
-                    { data: ["East", 79, 136, 130] },
+                    {
+                        label: "Plastic Brand Distribution",
+                        data: [20, 10, 30, 35],
+                        backgroundColor: [
+                            'rgb(255, 99, 132)',
+                            'rgb(54, 162, 235)',
+                            'rgb(255, 205, 86)',
+                            'rgb(193, 67, 75)',
+                            ],
+                    },
                 ]
             },
             options: {
@@ -88,27 +101,12 @@ export default {
     components: {
         lineChart,
         barChart,
-        GChart,
+        scatterChart,
+        pieChart
     },
 }
 </script>
 
 <style scoped>
-.chart-container {
-    float: left;
-    height: 18vh;
-    width: 30vw;
-    left: 10%;
-    top: 5%;
-    padding: 20px;
-}
-
-.barchart-container {
-    float: left;
-    height: 20vh;
-    width: 30vw;
-    left: 60%;
-    top: 3%;
-    padding: 10px;
-}
+  
 </style>
