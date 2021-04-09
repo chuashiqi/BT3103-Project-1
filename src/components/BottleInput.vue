@@ -47,7 +47,7 @@ export default {
         }, 
         brandEntered: function() {
             if (this.brandVal === "") {
-                alert("Please enter a brand!")
+                alert("Please enter a brand.")
             } else {
                 if (this.items !== []) {
                     this.items.length = 0
@@ -62,7 +62,7 @@ export default {
                     }
                 }
                 if (this.items.length === 0) {
-                    alert("Sorry, this brand is currently not supported!")
+                    alert("Sorry, this brand is currently not supported.")
                 } else {
                     this.brandEnter = true;
                 }
@@ -70,7 +70,7 @@ export default {
         }, 
         checkItem: function() {
             if (this.itemVal === "") {
-                alert("Please choose an item! If your item is not on the list, the item is currently not supported!")
+                alert("Please choose an item. If your item is not on the list, the item is currently not supported.")
             } else {
                 var recycle;
                 for (var item of this.items) {

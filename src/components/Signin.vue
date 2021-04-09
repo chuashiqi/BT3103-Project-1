@@ -37,8 +37,15 @@ export default {
                     this.$router.push({ name: 'Slider'})
                 })
                 .catch((error) => {
-                    var errorMessage = error.message;
-                    alert(errorMessage)
+                    if (error.code === "auth/invalid-email") {
+                        alert("Please enter a valid email.")
+                    }
+                    if (error.code === "auth/wrong-password") {
+                        alert("Wrong password, please try again.")
+                    }
+                    if (error.code === "auth/user-not-found") {
+                        alert("Your account does not exist. Please sign up.")
+                    }
                 });
             }
         }, 
