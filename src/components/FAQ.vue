@@ -67,7 +67,7 @@ export default {
             q7: "7. How many vouchers can I use at a time?",
             ans7: "You will only be able to use 1 voucher at a time.", 
             q8: "8. Where can I find the voucher code?",
-            ans8: "The voucher code can be found in your Rewards History"
+            ans8: "The voucher code can be found in your Rewards History."
         };
     },
     methods: {
@@ -98,7 +98,6 @@ export default {
     color: #000000;
     width: 50%;
     float: left;
-    text-align: left;
     margin-left: 2%;
 }
 
@@ -112,7 +111,6 @@ export default {
     color: #000000;
     width: 45%;
     float: right;
-    text-align: left;
 }
 
 h2 {
