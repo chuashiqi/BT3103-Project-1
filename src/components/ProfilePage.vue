@@ -14,8 +14,11 @@
                 <router-link to = "/recyclingHistory" exact>Your Recycling History</router-link>
                 <br>
                 <br>
-                <div class="chart-container">
-                    <lineChart :chart-data="chartdata" options="options" ref = "chart"></lineChart>
+                <div class = "circles">
+                    <div class = "stats">
+                        {{bottlesRecycled}} bottles <br> &
+                        saved {{orcaCount()}} orcas
+                    </div>
                 </div>
             </div>
                 
@@ -38,7 +41,6 @@
 <script>
 import Header from './Header.vue'
 import firebase from "../firebase.js"
-import lineChart from './lineChart.js'
 
 
 export default {
@@ -142,33 +144,14 @@ export default {
                 }
             }
         }, 
-        plotchart: function() {
-            var start = new Date(Date.parse(this.startdate))
-            var end = new Date(Date.parse(this.enddate))
-            if (this.chartdata.labels != []) {
-                this.chartdata.labels.length = 0
-                this.chartdata.datasets[0].data.length = 0
-            }
-            for (var d = start; d <= end; d.setDate(d.getDate() + 1)) {
-                var date = new Date(d);
-                date.setHours(0, 0, 0, 0);
-                this.chartdata.labels.push(date.toDateString())
-
-                var count = 0
-                for (var item of this.hist) {
-                    var itemDate = item.date.toDate();
-                    itemDate.setHours(0, 0, 0, 0)
-                    if (itemDate.valueOf() === date.valueOf()) {
-                        count +=1
-                    }
-                }
-                this.chartdata.datasets[0].data.push(10 * count)
-            }
-        },
+         orcaCount: function() {
+            var orcasSaved = this.bottlesRecycled/5
+            return orcasSaved;
+        }
+    
     },
     components: {
         Header,
-        lineChart
     },
 
     created() {
@@ -176,8 +159,6 @@ export default {
         this.fetchhist()
         this.fetchvouchers();
         this.filterdates();
-        this.plotchart();
-        this.$refs.chart.renderLineChart();
     }, 
 }
 
@@ -208,7 +189,7 @@ h2 {
   float: left;
   width: 48%;
   padding: 10px;
-  height: 300px;
+  height: 350px;
 }
 
 .row:after {
@@ -217,22 +198,14 @@ h2 {
   clear: both;
 }
 
-.chart-container {
-  margin: auto;
-  height: 20vh;
-  width: 30vw;
-  border: 2px solid black;
-  padding: 50px
-}
-
 #profileInfo {
     text-align:center;
 }
 
 .circles {
   display: flex;
+  padding: 50px;
   border: 2px solid black;
-  padding: 50px
 }
 
 .stats {

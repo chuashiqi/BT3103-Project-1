@@ -1,5 +1,7 @@
 <template>
     <div id="container">
+        <Header />
+        <div id="intro">
         <h3> Recycling Dashboard </h3>
         <p> This provides recycling dashboard for your information. This page 
             can be used to replace the current profile page, by providing more
@@ -8,11 +10,14 @@
             of bottle you recycle daily (top-right), amount of bottle recycled by area,
             plastic waste recycling to temperature scatter plot, heatmaps of recycling progress)
         </p>
+        </div>
         <div>
             <lineChart :chart-data="chartdata" options="options" ref = "chart"></lineChart>
         </div>
         <div class="barchart-container">
-            <barChart :chart-data="chartdataBar" options="options" ref = "chart"></barChart>
+            <v-container class="chart-container">
+                <barChart :chart-data="chartdataBar" options="options" ref = "chart"></barChart>
+            </v-container>
         </div>
         <div>
             <scatterChart></scatterChart>
@@ -24,6 +29,7 @@
 </template>
 
 <script>
+import Header from './Header.vue'
 import lineChart from './lineChart.js'
 import barChart from './barChart.js'
 import scatterChart from './scatterChart.js'
@@ -96,9 +102,17 @@ export default {
                     }]
                 }
             },
+            
+            chartStyles: {
+                height: '2px',
+                width: '3%',
+                float: 'left'
+                
+            },
         }
     },
     components: {
+        Header,
         lineChart,
         barChart,
         scatterChart,
@@ -108,5 +122,19 @@ export default {
 </script>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css?family=Righteous');
+
+#intro {
+    font-family: Righteous;
+    font-size: 15px;
+    text-align: center;
+}
+
+.chart-container {
+    min-height: 0;
+    position: relative; 
+    height:1px; 
+    width:1px;
+}
 
 </style>
