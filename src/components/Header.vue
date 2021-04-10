@@ -5,12 +5,8 @@
         <router-link to = "/FAQ" exact>FAQ</router-link>
         <router-link to = "/rewardsPage" exact>Rewards</router-link>
         <router-link to = "/quizPage" exact>Quiz</router-link>
-        <router-link to = "/benefitHistory2" exact>Benefit History</router-link>
         <div class="header-right">
-            <!--router-link to = "/recyclingHistory" exact>My Account</router-link-->
             <router-link to = "/profile" exact>My Account</router-link>
-            <!--router-link to = "/recyclingHistory" exact>My Account</router-link-->
-            <!--router-link to = "/profile" exact>Profile</router-link-->
             <router-link @click.native="remove" to = "/" exact>Logout</router-link>
         </div>
     </div>
