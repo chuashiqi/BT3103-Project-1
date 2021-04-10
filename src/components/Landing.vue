@@ -24,7 +24,7 @@ export default {
 .imageContainer {
     width: 100%;
     height: 100%;
-    background-image: url("https://i.imgur.com/e0q41H8.png");
+    background-image: url("https://i.imgur.com/NwvE7Vb.png");
     background-size: 100% 100%;
     background-repeat: no-repeat;
  }

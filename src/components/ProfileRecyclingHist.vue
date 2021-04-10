@@ -1,6 +1,7 @@
 <template>
     <div>
         <Header />
+        <div id = "left">
         <div id="profileInfo">
         <img width="85" height="80" align="left" src="../assets/profilepic.png"> 
         <h2> {{name}} </h2>
@@ -13,11 +14,14 @@
         <input type="date" id="end" value="2020-07-22" min="2020-01-01" max="2022-12-31" v-model = "enddate"><br>
         </div>
 
-        <lineChart :styles="chartStyles" :chart-data="chartdata" :options="options" v-if = "entered" ref = "chart"></lineChart>
-
         <div id="summary">
         <p>In total, you have recycled {{bottlesRecycled}} bottles and saved {{orcaCount()}} orcas.</p>
         <p>Keep recycling to save more!</p>
+        </div>
+        </div>
+        <div id = "right">
+        <br><br><br><br><br>
+        <lineChart :styles="chartStyles" :chart-data="chartdata" :options="options" v-if = "entered" ref = "chart" id = "chart"></lineChart>
         </div>
     </div>
 </template>
@@ -59,11 +63,12 @@ export default {
                             beginAtZero:true,
                         }
                     }]
-                }
+                }, 
+                maintainAspectRatio: false
             },
             chartStyles: {
-                height: '80px',
-                width: '50%',
+                height: '30%',
+                width: '100%',
                 position: 'relative',
                 float: 'right'
                 
@@ -190,7 +195,16 @@ export default {
 #summary {
     font-family: Righteous;
     text-align:left;
-    padding-top: 160px;
+    padding-top: 15%;
 }
 
+#left {
+    width: 40%;
+    float: left;
+}
+#right {
+    width: 60%;
+    float: right;
+    text-align: center;
+}
 </style>

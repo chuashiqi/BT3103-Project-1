@@ -42,7 +42,7 @@ export default {
             texts: [],
             timer: null,
             currentIndex: 0,
-            numRequiredOrca: 4,
+            numRequiredOrca: 5,
             numRequiredPlastic: 5,
             name: "", 
             user: [], 
