@@ -1,17 +1,19 @@
 <template>
     <div>
         <Header />
-        <h2>Reward History</h2>
+        <h2>Rewards History</h2>
 
         <table>
             <tr>
                 <td>Date</td>
                 <td>Voucher Value ($)</td>
+                <td>Voucher Code</td>
                 <td>Voucher Status</td>
             </tr>
             <tr v-for = "voucher in vouchers" v-bind:key = "voucher.index">
                 <td> {{voucher.date.toDate().getDate()}} / {{voucher.date.toDate().getMonth() + 1}} / {{voucher.date.toDate().getFullYear()}} </td>
                 <td>{{voucher.value}}</td>
+                <td>{{voucher.id}}</td>
                 <td>{{voucher.status}}</td>
             </tr>
         </table>
@@ -27,7 +29,6 @@ export default {
     name: "RewardHistory",
     data() {
         return {
-            // all retrieved from database
             vouchers: []
         };
     },
@@ -54,7 +55,6 @@ export default {
         Header
     }, 
     created() {
-        // retrive data from database
         this.fetchVouchers();
     }
 };

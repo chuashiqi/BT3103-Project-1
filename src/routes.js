@@ -15,9 +15,10 @@ import Failure from "./components/Failure.vue"
 import Signup from "./components/Signup.vue"
 import Signin from "./components/Signin.vue"
 import RecyclingHist from "./components/ProfileRecyclingHist.vue"
-import BenefitHistory2 from "./components/BenefitHistory2.vue"
+import BenefitHistory from "./components/BenefitHistory.vue"
 import Profile from "./components/ProfilePage.vue"
 import ForgotPassword from "./components/ForgotPassword.vue"
+import Dashboard from "./components/Dashboard.vue"
 
 export default [
     {path: "/", component: Landing},
@@ -37,7 +38,8 @@ export default [
     {path: "/failure", name: "failure", component: Failure, props: true},
     {path: "/quizPage", component: QuizPage},
     {path:"/recyclingHistory", component: RecyclingHist},
-    {path: "/benefitHistory2", component: BenefitHistory2},
     {path: "/profile", component: Profile},
-    {path: "/forgotPassword", component: ForgotPassword}
+    {path: "/benefitHistory", component: BenefitHistory},
+    {path: "/forgotPassword", component: ForgotPassword},
+    {path: "/dashboard", component: Dashboard}
 ]

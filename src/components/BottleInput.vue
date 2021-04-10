@@ -21,7 +21,7 @@
 
 <script>
 import Header from './Header.vue'
-import database from "../firebase.js"
+import firebase from "../firebase.js"
 
 export default {
     name: "BottleInput",
@@ -36,7 +36,7 @@ export default {
     },
     methods: {
         fetchItems: function() {
-            database.collection("bottles").get().then(querySnapShot => {
+            firebase.database.collection("bottles").get().then(querySnapShot => {
                 let item = {}
                 querySnapShot.forEach(doc => {
                     item = doc.data()
@@ -44,11 +44,10 @@ export default {
                     this.bottles.push(item)
                 })
             })
-            //console.log(this.bottles)
         }, 
         brandEntered: function() {
             if (this.brandVal === "") {
-                alert("Please enter a brand!")
+                alert("Please enter a brand.")
             } else {
                 if (this.items !== []) {
                     this.items.length = 0
@@ -63,7 +62,7 @@ export default {
                     }
                 }
                 if (this.items.length === 0) {
-                    alert("Sorry, this brand is currently not supported!")
+                    alert("Sorry, this brand is currently not supported.")
                 } else {
                     this.brandEnter = true;
                 }
@@ -71,7 +70,7 @@ export default {
         }, 
         checkItem: function() {
             if (this.itemVal === "") {
-                alert("Please choose an item! If your item is not on the list, the item is currently not supported!")
+                alert("Please choose an item. If your item is not on the list, the item is currently not supported.")
             } else {
                 var recycle;
                 for (var item of this.items) {

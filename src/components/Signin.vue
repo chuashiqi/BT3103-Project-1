@@ -11,8 +11,8 @@
         <p id="password">Password</p><br><br>
         <input type="password" name="password" placeholder="Your password" id="passwordInput" v-model="password"/>
         <button type="submit" id="signinbutton" v-on:click="checkData"> Sign In </button>
-        <!--benefit-history-2 :username="username" /-->
-        <p id = "resetpw" v-on:click = "resetPassword">Forgot Password?</p>
+        <router-link to = "/forgotPassword" exact><p id="forgotPw">Forgot Password?</p></router-link>
+        <router-link to = "/signup" exact><p id="dontHaveAccount">Don't have an account?</p></router-link>
     </div>
 </template>
 
@@ -34,14 +34,18 @@ export default {
             } else {
                 firebase.auth.signInWithEmailAndPassword(this.email, this.password)
                 .then(() => {
-                    // Signed in
-                    //var user = userCredential.user;
-                    this.$router.push({ name: 'Slider', params: {username: this.username}})
+                    this.$router.push({ name: 'Slider'})
                 })
                 .catch((error) => {
-                    //var errorCode = error.code;
-                    var errorMessage = error.message;
-                    alert(errorMessage)
+                    if (error.code === "auth/invalid-email") {
+                        alert("Please enter a valid email.")
+                    }
+                    if (error.code === "auth/wrong-password") {
+                        alert("Wrong password, please try again.")
+                    }
+                    if (error.code === "auth/user-not-found") {
+                        alert("Your account does not exist. Please sign up.")
+                    }
                 });
             }
         }, 
@@ -55,7 +59,7 @@ export default {
 
 <style scoped>
 img {
-    width:50%;
+    width:60%;
     height: 100%;
 }
 
@@ -63,8 +67,8 @@ img {
     position: absolute;
     width: 191px;
     height: 185px;
-    left: 62%;
-    top: 5%;
+    left: 65%;
+    top: 2%;
     font-family: Righteous;
     font-style: normal;
     font-weight: normal;
@@ -77,8 +81,8 @@ img {
 
 #email {
     position: absolute;
-    left: 62%;
-    top: 27%;
+    left: 65%;
+    top: 26%;
     font-family: Righteous;
     font-style: normal;
     font-weight: normal;
@@ -93,8 +97,8 @@ img {
     position: absolute;
     width: 376px;
     height: 74px;
-    left: 62%;
-    top: 39%;
+    left: 65%;
+    top: 41%;
     background: #FFFFFF;
     border: 2px solid #000000;
     box-sizing: border-box;
@@ -103,7 +107,7 @@ img {
 
 #password {
     position: absolute;
-    left: 62%;
+    left: 65%;
     top: 48%;
     font-family: Righteous;
     font-style: normal;
@@ -119,7 +123,7 @@ img {
     position: absolute;
     width: 376px;
     height: 74px;
-    left: 62%;
+    left: 65%;
     top: 63%;
     background: #FFFFFF;
     border: 2px solid #000000;
@@ -129,8 +133,8 @@ img {
 
 #resetpw {
     position: absolute;
-    left: 80%;
-    top: 94%;
+    left: 85%;
+    top: 90%;
     font-family: Righteous;
     font-style: normal;
     font-weight: normal;
@@ -146,8 +150,8 @@ img {
     position: absolute;
     width: 180px;
     height: 39px;
-    left: 77%;
-    top: 90%;
+    left: 79%;
+    top: 80%;
     background: rgba(46, 202, 193, 0.69);
     border-radius: 10px;
     font-family: Righteous;
@@ -158,7 +162,42 @@ img {
     display: flex;
     align-items: center;
     text-align: center;
+}
 
+#forgotPw {
+    position: absolute;
+    width: 300px;
+    height: 26px;
+    left: 83%;
+    top: 87%;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 21px;
+    display: flex;
+    align-items: center;
+    text-align: right;
+    text-decoration-line: underline;
+    color: #000000;
+}
+
+#dontHaveAccount {
+    position: absolute;
+    width: 300px;
+    height: 26px;
+    left: 80.3%;
+    top: 92%;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 21px;
+    display: flex;
+    align-items: center;
+    text-align: right;
+    text-decoration-line: underline;
+    color: #000000;
 }
 
 </style>

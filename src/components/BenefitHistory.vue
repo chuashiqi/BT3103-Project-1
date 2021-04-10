@@ -40,12 +40,11 @@ export default {
             points: [],
             user: [],
             availablePoints: 0,
-            values: [],
             startdate: new Date(),
             enddate: new Date(),
             chosen: [],
             show: false,
-            name: "",  // passed as props
+            name: "",
         }
     },
     methods: {
@@ -85,9 +84,6 @@ export default {
                 })
             });
         },
-        handleChange (values) {
-            this.values = values
-        }
     },
     
     components: {
@@ -108,13 +104,10 @@ export default {
             if (this.chosen !== []) {
                 this.chosen.length = 0
             }
-            console.log(this.points)
             for (var pt of this.points) {
-                console.log(pt)
                 var date = pt.date.toDate()
                 if (date.getTime() <= end.getTime() && date.getTime() >= start.getTime()) {
                     this.chosen.push(pt)
-                    console.log("psuhed")
                 }
             }
         }, 

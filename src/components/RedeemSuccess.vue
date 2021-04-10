@@ -24,8 +24,7 @@ export default {
     name: "RedeemSuccess",
     data() {
         return {
-            name: "", // passed from props
-            // all retrieved from database
+            name: "", 
             availablePoints: 0, 
             vouchers: [],
             user: []
@@ -74,7 +73,6 @@ export default {
         Header
     }, 
     created() {
-        // retrieve data from database
         this.fetchPointsAndVouchers();
     }
 };
