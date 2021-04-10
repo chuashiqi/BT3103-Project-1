@@ -49,11 +49,7 @@ export default {
             availablePoints: 0,
             bottlesRecycled: 0,
             vouchers: 0,
-            months: [],
-            amount: [],
             user: [],
-            hist: [], 
-            points: [],
         };
     },
 
