@@ -29,12 +29,12 @@ export default {
         return {
             images: [
                 {
-                    img: "https://i.imgur.com/mCIs5yY.png", 
+                    img: "https://i.imgur.com/vrKf9gm.png", 
                     textInImage: "Many of us beached and found dead with plastic waste in out stomachs",
                     name: "orca"
                 },
                 {
-                    img: "https://i.imgur.com/xJCTjP1.png", 
+                    img: "https://i.imgur.com/UbXQLcl.png", 
                     textInImage: "Plastic Waste releases methane and ethylene which exacerbates climate change", 
                     name: "plastic"
                 }
