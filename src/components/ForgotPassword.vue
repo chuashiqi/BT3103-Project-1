@@ -24,7 +24,11 @@ export default {
             firebase.auth.sendPasswordResetEmail(this.email).then(function() {
                 alert("Please check your email to reset your password.")
                 location.href = "./";
-            })
+            }).catch((error) => {
+                if (error.code === "auth/user-not-found") {
+                    alert("Your account does not exist. Please sign up.")
+                }
+            });
         }
         
     }
