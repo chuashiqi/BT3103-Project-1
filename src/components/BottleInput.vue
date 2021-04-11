@@ -1,7 +1,7 @@
 <template>
     <div>
         <Header />
-        <p>Unsure if your item can be recycled? <br>
+        <p>Unsure if your bottle can be recycled? <br>
         Check here! </p>
         
         <label for = "brand">Brand (e.g. Pokka)</label> <br>
