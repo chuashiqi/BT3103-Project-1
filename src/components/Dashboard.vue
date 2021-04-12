@@ -11,18 +11,16 @@
             plastic waste recycling to temperature scatter plot, heatmaps of recycling progress)
         </p>
         </div>
-        <div>
+        <div id="line-chart">
             <lineChart :chart-data="chartdata" options="options" ref = "chart"></lineChart>
         </div>
-        <div class="barchart-container">
-            <v-container class="chart-container">
-                <barChart :chart-data="chartdataBar" options="options" ref = "chart"></barChart>
-            </v-container>
+        <div id="bar-chart">
+            <barChart :chart-data="chartdataBar" options="options" ref = "chart"></barChart>
         </div>
-        <div>
-            <scatterChart></scatterChart>
+        <div id="scatter-chart">
+            <scatterChart options="options" ref = "chart"></scatterChart>
         </div>
-        <div>
+        <div id="pie-chart">
             <pieChart :chart-data="pieChartData"></pieChart>
         </div>
     </div> 
@@ -130,11 +128,34 @@ export default {
     text-align: center;
 }
 
-.chart-container {
-    min-height: 0;
-    position: relative; 
-    height:1px; 
-    width:1px;
+#line-chart {
+    position: relative;
+    top: 10%;
+    left: 11%; 
+    height:20%; 
+    width:20%;
+}
+
+#bar-chart {
+    position: relative;
+    top: 10%;
+    left: 30%;
+    height:20%; 
+    width:20%;
+}
+
+#scatter-chart {
+    position: relative;
+    float: left; 
+    height:10px; 
+    width:10px;
+}
+
+#pie-chart {
+    position: relative;
+    float: left; 
+    height:10px; 
+    width:10px;
 }
 
 </style>
