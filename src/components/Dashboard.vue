@@ -1,7 +1,7 @@
 <template>
     <div id="container">
-        <Header />
-        <div id="intro">
+        <div class="row">
+        <div id="intro" style="display: inline-block; width: 90%">
         <h3> Recycling Dashboard </h3>
         <p> This provides recycling dashboard for your information. This page 
             can be used to replace the current profile page, by providing more
@@ -11,23 +11,33 @@
             plastic waste recycling to temperature scatter plot, heatmaps of recycling progress)
         </p>
         </div>
-        <div id="line-chart">
+        <div id="pie-chart2" style="display: inline-block; width: 10%">
+            <pieChart :chart-data="pieChartData"></pieChart>
+        </div>
+        </div>
+        <div class="row">
+        <div id="line-chart" style="display: inline-block;">
             <lineChart :chart-data="chartdata" options="options" ref = "chart"></lineChart>
         </div>
-        <div id="bar-chart">
+        <div id="bar-chart" style="display: inline-block;">
             <barChart :chart-data="chartdataBar" options="options" ref = "chart"></barChart>
         </div>
-        <div id="scatter-chart">
+        <div>
+        <div id="scatter-chart" style="display: inline-block;">
             <scatterChart options="options" ref = "chart"></scatterChart>
         </div>
-        <div id="pie-chart">
+        <div id="pie-chart" style="display: inline-block;">
             <pieChart :chart-data="pieChartData"></pieChart>
+        </div>
+        <div id="pie-chart" style="display: inline-block;">
+            <pieChart :chart-data="pieChartData"></pieChart>
+        </div>
+        </div>
         </div>
     </div> 
 </template>
 
 <script>
-import Header from './Header.vue'
 import lineChart from './lineChart.js'
 import barChart from './barChart.js'
 import scatterChart from './scatterChart.js'
@@ -40,7 +50,7 @@ export default {
                 datasets: [
                     {
                     label: 'Total Bottles Recycled Daily',
-                    data:[40, 36, 38, 44, 50, 51, 47],
+                    data:[40, 40, 40, 40, 40, 40],
                     borderColor: ["#5CAFAA"]
                     }
                 ]
@@ -110,7 +120,6 @@ export default {
         }
     },
     components: {
-        Header,
         lineChart,
         barChart,
         scatterChart,
@@ -125,37 +134,50 @@ export default {
 #intro {
     font-family: Righteous;
     font-size: 15px;
-    text-align: center;
+    vertical-align: top;
 }
 
 #line-chart {
     position: relative;
-    top: 10%;
-    left: 11%; 
-    height:20%; 
-    width:20%;
+    align-items: center;
+    align-self: center;
+    /* top: 10%;
+    left: 11%;  */
+    height:40%; 
+    width:40%;
+    margin-left: 100px;
 }
 
 #bar-chart {
     position: relative;
-    top: 10%;
-    left: 30%;
-    height:20%; 
-    width:20%;
+    /* top: 10%;
+    left: 30%; */
+    align-items: center;
+    align-self: center;
+    
+    height:40%; 
+    width:40%;
 }
 
 #scatter-chart {
     position: relative;
-    float: left; 
-    height:10px; 
-    width:10px;
+    /* float: left;  */
+    height:20%; 
+    width:20%;
 }
 
 #pie-chart {
     position: relative;
-    float: left; 
-    height:10px; 
-    width:10px;
+    /* float: left;  */
+    height:20%; 
+    width:20%;
+}
+
+#pie-chart2 {
+    position: relative;
+    /* float: left;  */
+    height:20%; 
+    width:20%;
 }
 
 </style>
