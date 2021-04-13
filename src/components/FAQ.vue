@@ -6,7 +6,7 @@
         <p> {{q1}} </p>
         <p> {{ans1}} </p>
         <p>
-            <img src="https://www.ats-tanner.com/Marketing/News/image-thumb__6950__contentImage/Recycling-Codes.png">
+            <img src="https://www.ats-tanner.com/downloads/Recycling-Codes.png">
         </p>
         <p>Still Confused? <span v-on:click = "bottleInput">Check here!</span></p>
 
@@ -52,7 +52,7 @@ export default {
     name: "FAQ",
     data() {
         return {
-            q1: "1. Can this be recycled?",
+            q1: "1. Can my bottle be recycled?",
             ans1: "Kindly refer to the chart below. We accept bottles of codes 1, 2, and 5!",
             q2:"2. Where can I go to recycle my bottles?",
             q3:"3. How do I prepare my bottles for recycling?",
