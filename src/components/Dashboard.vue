@@ -11,9 +11,7 @@
             plastic waste recycling to temperature scatter plot, heatmaps of recycling progress)
         </p>
         </div>
-        <div id="pie-chart2" style="display: inline-block; width: 10%">
-            <pieChart :chart-data="pieChartData"></pieChart>
-        </div>
+
         </div>
         <div class="row">
         <div id="line-chart" style="display: inline-block;">
@@ -135,6 +133,7 @@ export default {
     font-family: Righteous;
     font-size: 15px;
     vertical-align: top;
+    text-align: center;
 }
 
 #line-chart {
@@ -154,7 +153,6 @@ export default {
     left: 30%; */
     align-items: center;
     align-self: center;
-    
     height:40%; 
     width:40%;
 }
@@ -163,21 +161,21 @@ export default {
     position: relative;
     /* float: left;  */
     height:20%; 
-    width:20%;
+    width:33%;
 }
 
 #pie-chart {
     position: relative;
     /* float: left;  */
     height:20%; 
-    width:20%;
+    width:33%;
 }
 
 #pie-chart2 {
     position: relative;
     /* float: left;  */
     height:20%; 
-    width:20%;
+    width:33%;
 }
 
 </style>
