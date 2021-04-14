@@ -1,5 +1,6 @@
 <template>
     <div id="container">
+        <Header />
         <div class="row">
         <div id="intro" style="display: inline-block; width: 90%">
         <h3> Recycling Dashboard </h3>
@@ -40,6 +41,7 @@ import lineChart from './lineChart.js'
 import barChart from './barChart.js'
 import scatterChart from './scatterChart.js'
 import pieChart from './pieChart.js'
+import Header from './Header.vue'
 export default {
     data() {
         return {
@@ -121,7 +123,8 @@ export default {
         lineChart,
         barChart,
         scatterChart,
-        pieChart
+        pieChart,
+        Header,
     },
 }
 </script>
