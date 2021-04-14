@@ -2,66 +2,46 @@ import { Scatter } from 'vue-chartjs'
 
 export default {
   extends: Scatter,
-  data() {
-    return {
-      chartData: {
-        datasets: [{
-          label: 'Population Data',
-          borderWidth: 1,
-          borderColor: '#2554FF',
-          backgroundColor: '#2554FF',
-          data: [{
-              x: 6,
-              y: 3,
-              r: 15
-            }, {
-              x: 3,
-              y: 12,
-              r: 4
-            },
-            {
-              x: 5,
-              y: 15,
-              r: 10
-            },
-            {
-              x: 3,
-              y: 12,
-              r: 8
-            },
-            {
-              x: 4,
-              y: 5,
-              r: 20
-            },
-            {
-              x: 2,
-              y: 6,
-              r: 3
-            },
-            {
-              x: 4,
-              y: 9,
-              r: 11
-            },
-            {
-              x: 5,
-              y: 10,
-              r: 6
-            }
-          ]
+  mounted () {
+    this.renderChart({
+      datasets: [{
+        label: "Percentage of Recycling to Daily Temperature",
+        fill: false,
+        borderColor: '#f87979',
+        backgroundColor: '#f87979',
+        showLine: false,
+        data: [{
+          x: 9,
+          y: 33.2
+        }, {
+          x: 7,
+          y: 33.5
+        }, {
+          x: 11,
+          y: 32.3
+        }, {
+          x: 12,
+          y: 31.3
+        }, {
+          x: 10.1,
+          y: 31.8
+        }, {
+          x: 11.1,
+          y: 32.1
+        }, {
+          x: 8.5,
+          y: 33
+        }, {
+          x:7,
+          y: 32
+        }, {
+          x: 9,
+          y: 31.9
+        }, {
+          x: 8,
+          y: 32.2
         }]
-      },
-      options: {
-        legend: {
-          display: true
-        },
-        responsive: true,
-        maintainAspectRatio: false
-      }
-    }
-  },
-  mounted() {
-    this.renderChart(this.chartData, this.options)
+      }]
+    }, {responsive: true, maintainAspectRatio: false})
   }
 }

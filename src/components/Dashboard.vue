@@ -1,6 +1,5 @@
 <template>
     <div id="container">
-        <Header />
         <div class="row">
         <div id="intro" style="display: inline-block; width: 90%">
         <h3> Recycling Dashboard </h3>
@@ -26,10 +25,10 @@
             <scatterChart options="options" ref = "chart"></scatterChart>
         </div>
         <div id="pie-chart" style="display: inline-block;">
-            <pieChart :chart-data="pieChartData"></pieChart>
+            <DoughnutChart :chart-data="pieChartData"></DoughnutChart>
         </div>
         <div id="pie-chart" style="display: inline-block;">
-            <pieChart :chart-data="pieChartData"></pieChart>
+            <pieChart :chart-data="pieChartData2"></pieChart>
         </div>
         </div>
         </div>
@@ -41,7 +40,7 @@ import lineChart from './lineChart.js'
 import barChart from './barChart.js'
 import scatterChart from './scatterChart.js'
 import pieChart from './pieChart.js'
-import Header from './Header.vue'
+import DoughnutChart from './doughnutChart.js'
 export default {
     data() {
         return {
@@ -50,8 +49,9 @@ export default {
                 datasets: [
                     {
                     label: 'Total Bottles Recycled Daily',
-                    data:[40, 40, 40, 40, 40, 40],
-                    borderColor: ["#5CAFAA"]
+                    data:[39, 37, 41, 43, 48, 36],
+                    borderColor: ["#5CAFAA"],
+                    fill: false,
                     }
                 ]
             },
@@ -100,6 +100,21 @@ export default {
                     },
                 ]
             },
+            pieChartData2: {
+                labels: ["18-27", "28-37", "38-47", "47 and above"],
+                datasets: [
+                    {
+                        label: "Age Group",
+                        data: [37, 25, 21, 17],
+                        backgroundColor: [
+                            'rgb(255, 99, 132)',
+                            'rgb(54, 162, 235)',
+                            'rgb(255, 205, 86)',
+                            'rgb(193, 67, 75)',
+                            ],
+                    },
+                ]
+            },
             options: {
                 responsive: true,
                 scales: {
@@ -108,7 +123,8 @@ export default {
                             beginAtZero: true,
                         }
                     }]
-                }
+                },
+                maintainAspectRatio: false,
             },
             
             chartStyles: {
@@ -124,7 +140,7 @@ export default {
         barChart,
         scatterChart,
         pieChart,
-        Header,
+        DoughnutChart,
     },
 }
 </script>
@@ -136,7 +152,6 @@ export default {
     font-family: Righteous;
     font-size: 15px;
     vertical-align: top;
-    text-align: center;
 }
 
 #line-chart {
@@ -146,7 +161,7 @@ export default {
     /* top: 10%;
     left: 11%;  */
     height:40%; 
-    width:40%;
+    width:35%;
     margin-left: 100px;
 }
 
@@ -157,7 +172,8 @@ export default {
     align-items: center;
     align-self: center;
     height:40%; 
-    width:40%;
+    width:35%;
+    margin-left: 80px;
 }
 
 #scatter-chart {
