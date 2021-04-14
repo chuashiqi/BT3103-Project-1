@@ -2,7 +2,7 @@
     <div id="container">
         <div class = "imageContainer">
         <p id="bigWords"> RecyclEasy </p>
-        <button id="login"><router-link to = "/signin" exact id="loginText">Login</router-link></button>
+        <button id="login"><router-link to = "/signin" exact id="loginText">Sign in</router-link></button>
         <button id="signup"><router-link to = "/signup" exact id="signUpText">Sign Up</router-link></button>
         </div>
     </div>
