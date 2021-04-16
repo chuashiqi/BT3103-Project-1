@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div v-if = "state">
         <Header />
         <transition-group name="fade" tag="div">
             <div v-for="i in [currentIndex]" :key="i">
@@ -47,6 +47,7 @@ export default {
             name: "", 
             user: [], 
             recycledToday: [], 
+            state: false,
         };
     },
 
@@ -76,37 +77,45 @@ export default {
         }, 
   
         fetchUserInfo: function() {
-            var email = firebase.auth.currentUser.email
-            firebase.database.collection("users").get().then(snapshot => {
-                let user = {}
-                snapshot.forEach(doc => {
-                    user = doc.data()
-                    user.id = doc.id
-                    if (user.email === email) {
-                        this.name = user.username;
-                        this.user.push(user)
-                    }
-                })
-            });
-            var query = firebase.database.collection("users").where("email", "==", email)
-            query.get().then((querySnapshot) => {
-                querySnapshot.forEach((document) => {
-                    document.ref.collection("points").get().then((querySnapshot) => {
-                        var dateToday = new Date();
-                        dateToday.setHours(0, 0, 0, 0)
-                        let item = {}
-                        querySnapshot.forEach(doc => {
-                            item = doc.data()
-                            item.id = doc.id
-                            var itemDate = item.date.toDate()
-                            itemDate.setHours(0, 0, 0, 0)
-                            if (itemDate.valueOf() === dateToday.valueOf() && item.description !== "Quiz") {
-                                this.recycledToday.push(item)
-                            }
-                        })
+            var user = firebase.auth.currentUser
+            if (user) {
+                this.state = true;
+                var email = firebase.auth.currentUser.email
+                firebase.database.collection("users").get().then(snapshot => {
+                    let user = {}
+                    snapshot.forEach(doc => {
+                        user = doc.data()
+                        user.id = doc.id
+                        if (user.email === email) {
+                            this.name = user.username;
+                            this.user.push(user)
+                        }
+                    })
+                });
+                var query = firebase.database.collection("users").where("email", "==", email)
+                query.get().then((querySnapshot) => {
+                    querySnapshot.forEach((document) => {
+                        document.ref.collection("points").get().then((querySnapshot) => {
+                            var dateToday = new Date();
+                            dateToday.setHours(0, 0, 0, 0)
+                            let item = {}
+                            querySnapshot.forEach(doc => {
+                                item = doc.data()
+                                item.id = doc.id
+                                var itemDate = item.date.toDate()
+                                itemDate.setHours(0, 0, 0, 0)
+                                if (itemDate.valueOf() === dateToday.valueOf() && item.description !== "Quiz") {
+                                    this.recycledToday.push(item)
+                                }
+                            })
+                        });
                     });
                 });
-            });
+            } else {
+                alert("Please sign in or sign up.")
+                this.state = false;
+                location.href = "./";
+            }
         }
         
     },

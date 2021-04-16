@@ -69,6 +69,8 @@ export default {
 </script>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css?family=Righteous');
+
 img {
     width:60%;
     height: 100%;
@@ -192,7 +194,7 @@ img {
     height: 26px;
     left: 83.5%;
     top: 93%;
-    font-family: Roboto;
+    font-family: Righteous;
     font-style: normal;
     font-weight: 500;
     font-size: 18px;

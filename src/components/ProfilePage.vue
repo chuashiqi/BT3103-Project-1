@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div v-if = "state">
         <Header />
         <div id="profileInfo">
         <img width="150" height="130" class="center" src="../assets/profilepic.png"> 
@@ -50,25 +50,34 @@ export default {
             bottlesRecycled: 0,
             vouchers: 0,
             user: [],
+            state: false,
         };
     },
 
     methods: {
         fetchPoints: function() {
-            var email = firebase.auth.currentUser.email
-            firebase.database.collection("users").get().then(snapshot => {
-                let user = {}
-                snapshot.forEach(doc => {
-                    user = doc.data()
-                    user.id = doc.id
-                    if (user.email === email) {
-                        this.name = user.username;
-                        this.user.push(user)
-                        this.availablePoints = user.availablePoints
-                        this.bottlesRecycled = user.bottlesRecycled
-                    }
-                })
-            });
+            var user = firebase.auth.currentUser
+            if (user) {
+                this.state = true;
+                var email = firebase.auth.currentUser.email
+                firebase.database.collection("users").get().then(snapshot => {
+                    let user = {}
+                    snapshot.forEach(doc => {
+                        user = doc.data()
+                        user.id = doc.id
+                        if (user.email === email) {
+                            this.name = user.username;
+                            this.user.push(user)
+                            this.availablePoints = user.availablePoints
+                            this.bottlesRecycled = user.bottlesRecycled
+                        }
+                    })
+                });
+            } else {
+                alert("Please sign in or sign up.")
+                this.state = false;
+                location.href = "./";
+            }
         },
         fetchvouchers: function() {
             var email = firebase.auth.currentUser.email
@@ -119,7 +128,7 @@ h2 {
 #preview {
     font-family: Righteous;
     font-size: 20px;
-    margin-bottom: 5%;
+    margin-bottom: 3%;
 }
 
 .center {
