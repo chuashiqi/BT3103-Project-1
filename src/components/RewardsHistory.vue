@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div v-if = "state">
         <Header />
         <h2>Rewards History</h2>
 
@@ -29,25 +29,34 @@ export default {
     name: "RewardHistory",
     data() {
         return {
-            vouchers: []
+            vouchers: [],
+            state: false,
         };
     },
     methods: {
         fetchVouchers: function() {
-            var email = firebase.auth.currentUser.email
-            var query = firebase.database.collection("users").where("email", "==", email)
-            query.get().then((querySnapshot) => {
-                querySnapshot.forEach((document) => {
-                    document.ref.collection("vouchers").orderBy("date", "desc").get().then((querySnapshot) => {
-                        let voucher = {}
-                        querySnapshot.forEach(doc => {
-                            voucher = doc.data()
-                            voucher.id = doc.id
-                            this.vouchers.push(voucher)
-                        })
+            var user = firebase.auth.currentUser
+            if (user) {
+                this.state = true;
+                var email = firebase.auth.currentUser.email
+                var query = firebase.database.collection("users").where("email", "==", email)
+                query.get().then((querySnapshot) => {
+                    querySnapshot.forEach((document) => {
+                        document.ref.collection("vouchers").orderBy("date", "desc").get().then((querySnapshot) => {
+                            let voucher = {}
+                            querySnapshot.forEach(doc => {
+                                voucher = doc.data()
+                                voucher.id = doc.id
+                                this.vouchers.push(voucher)
+                            })
+                        });
                     });
                 });
-            });
+            } else {
+                alert("Please sign in or sign up.")
+                this.state = false;
+                location.href = "./";
+            }
         },
 
     },

@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div v-if = "state">
         <Header />
         <h2>{{name}}, you have</h2>
         <div class = "circles">
@@ -46,6 +46,7 @@ export default {
             availablePoints: 0,
             user: [],
             name: "", 
+            state: false,
         };
     },
     methods: {
@@ -94,19 +95,27 @@ export default {
             }
         }, 
         fetchPoints: function() {
-            var email = firebase.auth.currentUser.email
-            firebase.database.collection("users").get().then(snapshot => {
-                let user = {}
-                snapshot.forEach(doc => {
-                    user = doc.data()
-                    user.id = doc.id
-                    if (user.email === email) {
-                        this.name = user.username;
-                        this.user.push(user)
-                        this.availablePoints = user.availablePoints
-                    }
-                })
-            });
+            var user = firebase.auth.currentUser
+            if (user) {
+                this.state = true;
+                var email = firebase.auth.currentUser.email
+                firebase.database.collection("users").get().then(snapshot => {
+                    let user = {}
+                    snapshot.forEach(doc => {
+                        user = doc.data()
+                        user.id = doc.id
+                        if (user.email === email) {
+                            this.name = user.username;
+                            this.user.push(user)
+                            this.availablePoints = user.availablePoints
+                        }
+                    })
+                });
+            } else {
+                alert("Please sign in or sign up.")
+                this.state = false;
+                location.href = "./";
+            }
         },
         updateVouchers: function() {
             firebase.database.collection("users").doc(this.user[0].id).collection("vouchers").add(this.voucher);

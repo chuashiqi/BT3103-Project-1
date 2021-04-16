@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div v-if = "state">
         <Header />
         <h2>Congratulations {{name}}!</h2>
         <p>Keep recycling to get even more rewards</p>
@@ -27,7 +27,8 @@ export default {
             name: "", 
             availablePoints: 0, 
             vouchers: [],
-            user: []
+            user: [], 
+            state: false,
         };
     },
     methods: {
@@ -41,32 +42,40 @@ export default {
             return total;
         }, 
         fetchPointsAndVouchers: function() {
-            var email = firebase.auth.currentUser.email
-            firebase.database.collection("users").get().then(snapshot => {
-                let user = {}
-                snapshot.forEach(doc => {
-                    user = doc.data()
-                    user.id = doc.id
-                    if (user.email === email) {
-                        this.name = user.username;
-                        this.user.push(user)
-                        this.availablePoints = user.availablePoints
-                    }
-                })
-            });
-            var query = firebase.database.collection("users").where("email", "==", email)
-            query.get().then((querySnapshot) => {
-                querySnapshot.forEach((document) => {
-                    document.ref.collection("vouchers").get().then((querySnapshot) => {
-                        let voucher = {}
-                        querySnapshot.forEach(doc => {
-                            voucher = doc.data()
-                            voucher.id = doc.id
-                            this.vouchers.push(voucher)
-                        })
+            var user = firebase.auth.currentUser
+            if (user) {
+                this.state = true;
+                var email = firebase.auth.currentUser.email
+                firebase.database.collection("users").get().then(snapshot => {
+                    let user = {}
+                    snapshot.forEach(doc => {
+                        user = doc.data()
+                        user.id = doc.id
+                        if (user.email === email) {
+                            this.name = user.username;
+                            this.user.push(user)
+                            this.availablePoints = user.availablePoints
+                        }
+                    })
+                });
+                var query = firebase.database.collection("users").where("email", "==", email)
+                query.get().then((querySnapshot) => {
+                    querySnapshot.forEach((document) => {
+                        document.ref.collection("vouchers").get().then((querySnapshot) => {
+                            let voucher = {}
+                            querySnapshot.forEach(doc => {
+                                voucher = doc.data()
+                                voucher.id = doc.id
+                                this.vouchers.push(voucher)
+                            })
+                        });
                     });
                 });
-            });
+            } else {
+                alert("Please sign in or sign up.")
+                this.state = false;
+                location.href = "./";
+            }
         },
     },
     components: {

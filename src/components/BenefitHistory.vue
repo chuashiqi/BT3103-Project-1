@@ -1,5 +1,5 @@
 <template>
-<div>
+    <div v-if = "state">
         <Header /> <br> <br>
         <p>Choose your period</p>
         <input type="date" id="start" value="2020-07-22" min="2020-01-01" max="2022-12-31" v-model = "startdate">
@@ -45,6 +45,7 @@ export default {
             chosen: [],
             show: false,
             name: "",
+            state: false,
         }
     },
     methods: {
@@ -70,19 +71,27 @@ export default {
         },
 
         fetchPoints: function() {
-            var email = firebase.auth.currentUser.email
-            firebase.database.collection("users").get().then(snapshot => {
-                let user = {}
-                snapshot.forEach(doc => {
-                    user = doc.data()
-                    user.id = doc.id
-                    if (user.email === email) {
-                        this.name = user.username;
-                        this.user.push(user)
-                        this.availablePoints = user.availablePoints
-                    }
-                })
-            });
+            var user = firebase.auth.currentUser
+            if (user) {
+                this.state = true;
+                var email = firebase.auth.currentUser.email
+                firebase.database.collection("users").get().then(snapshot => {
+                    let user = {}
+                    snapshot.forEach(doc => {
+                        user = doc.data()
+                        user.id = doc.id
+                        if (user.email === email) {
+                            this.name = user.username;
+                            this.user.push(user)
+                            this.availablePoints = user.availablePoints
+                        }
+                    })
+                });
+            } else {
+                alert("Please sign in or sign up.")
+                this.state = false;
+                location.href = "./";
+            }
         },
     },
     

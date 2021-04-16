@@ -1,5 +1,5 @@
 <template>
-  <div id="quiz">
+  <div id="quiz" v-if = "state">
     <Header />
     <h1 id="title">QUIZ</h1>
     <div v-if = "this.user[0]['quizCompleted'] === false">
@@ -40,7 +40,8 @@ export default {
                 amount: 5, 
                 date: new Date(), 
                 description: "Quiz"
-            }
+            }, 
+            state: false,
         }
     }, 
 
@@ -55,18 +56,26 @@ export default {
             }
         }, 
         fetchUserInfo: function() {
-            var email = firebase.auth.currentUser.email
-            firebase.database.collection("users").get().then(snapshot => {
-                let user = {}
-                snapshot.forEach(doc => {
-                    user = doc.data()
-                    user.id = doc.id
-                    if (user.email === email) {
-                        this.username = user.username;
-                        this.user.push(user)
-                    }
+            var user = firebase.auth.currentUser
+            if (user) {
+                this.state = true;
+                var email = firebase.auth.currentUser.email
+                firebase.database.collection("users").get().then(snapshot => {
+                    let user = {}
+                    snapshot.forEach(doc => {
+                        user = doc.data()
+                        user.id = doc.id
+                        if (user.email === email) {
+                            this.username = user.username;
+                            this.user.push(user)
+                        }
+                    })
                 })
-            })
+            } else {
+                alert("Please sign in or sign up.")
+                this.state = false;
+                location.href = "./";
+            }
         }, 
         updateQuizStatus: function() {
             firebase.database.collection("users").doc(this.user[0].id).update({

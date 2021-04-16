@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div v-if = "state">
         <Header />
         <div id = "left">
         <div id="profileInfo">
@@ -70,8 +70,8 @@ export default {
                 height: '30%',
                 width: '100%',
                 position: 'relative',
-                float: 'right'
-                
+                float: 'right',
+                state: false,
             },
         };
     },
@@ -79,20 +79,28 @@ export default {
    
     methods: {
         fetchPoints: function() {
-            var email = firebase.auth.currentUser.email
-            firebase.database.collection("users").get().then(snapshot => {
-                let user = {}
-                snapshot.forEach(doc => {
-                    user = doc.data()
-                    user.id = doc.id
-                    if (user.email === email) {
-                        this.name = user.username;
-                        this.user.push(user)
-                        this.availablePoints = user.availablePoints
-                        this.bottlesRecycled = user.bottlesRecycled
-                    }
-                })
-            });
+            var user = firebase.auth.currentUser
+            if (user) {
+                this.state = true;
+                var email = firebase.auth.currentUser.email
+                firebase.database.collection("users").get().then(snapshot => {
+                    let user = {}
+                    snapshot.forEach(doc => {
+                        user = doc.data()
+                        user.id = doc.id
+                        if (user.email === email) {
+                            this.name = user.username;
+                            this.user.push(user)
+                            this.availablePoints = user.availablePoints
+                            this.bottlesRecycled = user.bottlesRecycled
+                        }
+                    })
+                });
+            } else {
+                alert("Please sign in or sign up.")
+                this.state = false;
+                location.href = "./";
+            }
         },
         fetchhist: function() {
             var email = firebase.auth.currentUser.email

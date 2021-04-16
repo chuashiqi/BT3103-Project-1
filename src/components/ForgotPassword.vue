@@ -129,7 +129,7 @@ img {
     width: 180px;
     height: 39px;
     left: 77%;
-    top: 90%;
+    top: 80%;
     background: rgba(46, 202, 193, 0.69);
     border-radius: 10px;
     font-family: Righteous;

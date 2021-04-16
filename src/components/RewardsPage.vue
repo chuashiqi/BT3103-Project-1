@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div v-if = "state">
         <Header />
         <h2>Hello, {{name}}</h2>
         <p> Check and redeem your exclusive rewards here! </p>
@@ -18,7 +18,8 @@ export default {
     data() {
         return {
             name: "", 
-            user: []
+            user: [],
+            state: false,
         };
     },
     methods: {
@@ -29,18 +30,26 @@ export default {
             this.$router.push("rewardsHistory")
         }, 
         fetchUser: function() {
-            var email = firebase.auth.currentUser.email
-            firebase.database.collection("users").get().then(snapshot => {
-                let user = {}
-                snapshot.forEach(doc => {
-                    user = doc.data()
-                    user.id = doc.id
-                    if (user.email === email) {
-                        this.name = user.username;
-                        this.user.push(user)
-                    }
-                })
-            });
+            var user = firebase.auth.currentUser
+            if (user) {
+                this.state = true;
+                var email = firebase.auth.currentUser.email
+                firebase.database.collection("users").get().then(snapshot => {
+                    let user = {}
+                    snapshot.forEach(doc => {
+                        user = doc.data()
+                        user.id = doc.id
+                        if (user.email === email) {
+                            this.name = user.username;
+                            this.user.push(user)
+                        }
+                    })
+                });
+            } else {
+                alert("Please sign in or sign up.")
+                this.state = false;
+                location.href = "./";
+            }
         }
     },
 
