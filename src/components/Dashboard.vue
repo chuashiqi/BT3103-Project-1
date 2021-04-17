@@ -27,8 +27,8 @@
         <div id="pie-chart" style="display: inline-block;">
             <DoughnutChart :chart-data="pieChartData"></DoughnutChart>
         </div>
-        <div id="pie-chart" style="display: inline-block;">
-            <pieChart :chart-data="pieChartData2"></pieChart>
+        <div id="line-chart2" style="display: inline-block;">
+            <lineChart :chart-data="lineChartData2"></lineChart>
         </div>
         </div>
         </div>
@@ -49,7 +49,7 @@ export default {
                 datasets: [
                     {
                     label: 'Total Bottles Recycled Daily',
-                    data:[39, 37, 41, 43, 48, 36],
+                    data:[39, 37, 41, 43, 48, 36, 38],
                     borderColor: ["#5CAFAA"],
                     fill: false,
                     }
@@ -100,19 +100,15 @@ export default {
                     },
                 ]
             },
-            pieChartData2: {
-                labels: ["18-27", "28-37", "38-47", "47 and above"],
+            lineChartData2: {
+                labels:["January", "February", "March", "April"],
                 datasets: [
                     {
-                        label: "Age Group",
-                        data: [37, 25, 21, 17],
-                        backgroundColor: [
-                            'rgb(255, 99, 132)',
-                            'rgb(54, 162, 235)',
-                            'rgb(255, 205, 86)',
-                            'rgb(193, 67, 75)',
-                            ],
-                    },
+                    label: 'Total Reward Redemption in $',
+                    data:[273, 289, 292, 310],
+                    borderColor: ["#5CAFAA"],
+                    fill: false,
+                    }
                 ]
             },
             options: {
