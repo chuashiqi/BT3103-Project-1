@@ -86,16 +86,18 @@ export default {
                 ]
             },
             pieChartData: {
-                labels: ["Pokka", "Pepsi", "Water", "Other"],
+                labels: ["Pokka", "Yeo's", "Ribena", "Meiji", "TOP", "F&N"],
                 datasets: [
                     {
                         label: "Plastic Brand Distribution",
-                        data: [20, 10, 30, 35],
+                        data: [20, 10, 25, 25, 10, 10],
                         backgroundColor: [
                             'rgb(255, 99, 132)',
                             'rgb(54, 162, 235)',
                             'rgb(255, 205, 86)',
                             'rgb(193, 67, 75)',
+                            'rgb(150, 61, 99)',
+                            'rgb(255, 75, 36)',
                             ],
                     },
                 ]
