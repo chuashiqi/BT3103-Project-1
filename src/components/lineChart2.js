@@ -15,15 +15,15 @@ export default {
     data: function () {
         return {
             datacollection: {
-                labels: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+                labels:["January", "February", "March", "April"],
                 datasets: [
                     {
-                    label: 'Total Bottles Recycled Daily',
-                    data: [61, 48, 42, 51, 47, 56, 58],
+                    label: 'Total Reward Redemption in $',
+                    data:[273, 289, 292, 310],
                     borderColor: ["#5CAFAA"],
                     fill: false,
                     }
-                ],
+                ]
             },
             options: {
                 scales: {

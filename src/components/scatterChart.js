@@ -5,7 +5,7 @@ export default {
   mounted () {
     this.renderChart({
       datasets: [{
-        label: "Percentage of Recycling to Daily Temperature",
+        label: "[Some Impact of Recycling *to be edited*]",
         fill: false,
         borderColor: '#f87979',
         backgroundColor: '#f87979',
