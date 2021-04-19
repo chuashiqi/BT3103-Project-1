@@ -30,6 +30,7 @@ export default {
                     yAxes: [{
                         ticks: {
                             beginAtZero: true,
+                            autoskip: false,
                         }
                     }]
                 },
