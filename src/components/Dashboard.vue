@@ -1,6 +1,7 @@
 <template>
     <div id="container">
         <div class="head">
+            <img width="70" height="70" align="left" src="../assets/dashboard.png"> 
             <h1> RecyclEasy Dashboard </h1>
         </div>
 
@@ -10,6 +11,14 @@
         Beyond user trends, the impact of the users' combined recycling efforts can also be visualizes.
         </p>
         </div>
+
+        <table>
+            <tr>
+                <th>Total number of bottles recycled daily during a one week period</th>
+                <th>Monthly total bottles recycled by Region</th>
+            </tr>
+        </table>
+
         <div class="row">
         <div id="line-chart" style="display: inline-block;">
             <lineChart></lineChart>
@@ -20,20 +29,11 @@
         
         <table>
             <tr>
-                <th>The first linechart shows the total number of bottles recycled daily during a one week period. 
-                <th>The bar chart on the left segments the monthly total bottles recycled into various regions in 
-                Singapore. </th>
-            </tr>
-            <tr>
-                <td>Here, we see that RecyclEasy users generally recycle more bottles on weekends.
-                In this way, RecyclEasy or various recycling firms can plan the days for collecting the recycled 
-                bottles from the machines at NTUC.</td>
-                <td>Here, we see that the users in the north region seems to recycle the most. This will help
-                RecyclEasy make better decision about where resources (such as the machines) can be located to
-                increase convenience of recycling.</td>
+                <th>Distribution of Brands among the recycled bottles</th>
+                <th>Impact of Recycling CO2 emissions</th>
+                <th>Total reward redemptions by the users on a monthly basis</th>
             </tr>
         </table>
-        <br>
 
         <div>
         <div id="pie-chart" style="display: inline-block;">
@@ -47,22 +47,6 @@
         </div>
         </div>
         </div>
-
-        <table>
-            <tr>
-                <th>This piechart shows the distribution of brands among the recycled bottles collected.</th>
-                <th>chart?</th>
-                <th>This linechart showcases the total reward redemptions by the users on a monthly basis.</th>
-            </tr>
-            <tr>
-                <td>Here, we see that Yeos bottles are most common among those recycled. This can help the brands
-                or NTUC make decisions regarding their recycling programs or promotions.</td>
-                <td>chart?</td>
-                <td>Here, we see an increasing trend of reward redemptions which means that users are doing
-                well in accumulating points from their recycling, which shows that this method of 
-                incentivising recycling is beneficial.</td>
-            </tr>
-        </table>
     </div> 
     </div>
 </template>
@@ -84,11 +68,11 @@ export default {
                         label: "Plastic Brand Distribution",
                         data: [20, 45, 25, 20, 5],
                         backgroundColor: [
-                            'rgb(255, 99, 132)',
-                            'rgb(54, 162, 235)',
-                            'rgb(255, 205, 86)',
-                            'rgb(193, 67, 75)',
-                            'rgb(123, 37, 175)',
+                            '#68F7D9',
+                            '#5ACCB4 ',
+                            '#4FAB98 ',
+                            '#489887 ',
+                            '#38786A',
                             ],
                     },
                 ]
@@ -119,18 +103,23 @@ export default {
   font-family: Righteous;
   overflow: hidden;
   background-color: #5CAFAA;
-  padding: 20px 10px;
-  text-align: center;
+  padding: 10px 400px;
+  text-align: left;
 }
 
-table, th, td {
+table, th, tr {
+    table-layout: fixed;
     font-family: Righteous;
+    color:white;
     border: 1px solid black;
     border-collapse: collapse;
     margin-left: auto;
     margin-right: auto;
     text-align: center;
-    background-color:#9FF1DC;
+    /* background-color:#9FF1DC; */
+    background-color: #205054;
+    width:100%;
+    font-size:15px;
 }
 
 #intro {

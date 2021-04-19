@@ -19,12 +19,12 @@ export default {
                 datasets: [
                     {
                         label: 'No Recycling',
-                        data: [100, 120, 95, 110],
+                        data: [100, 101, 100,103],
                         borderColor: ["#D36582"],
                     },
                     {
                         label: 'Recycling',
-                        data: [80, 100, 85, 90],
+                        data: [100, 95, 80, 76],
                         borderColor: ["#5CAFAA"],
                     },
                 ],

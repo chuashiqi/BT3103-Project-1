@@ -15,27 +15,27 @@ export default {
                     {
                     label: 'West',
                     data:[100, 96, 123, 98],
-                    backgroundColor: ["#D36582", "#D36582", "#D36582", "#D36582"]
+                    backgroundColor: ["#9FF1DC", "#9FF1DC", "#9FF1DC", "#9FF1DC"]
                     },
                     {
                     label: 'South-East',
                     data:[96, 106, 109, 120],
-                    backgroundColor: ["#2F2963", "#2F2963", "#2F2963", "#2F2963"]
+                    backgroundColor: ["#9FE8F1", "#9FE8F1", "#9FE8F1", "#9FE8F1"]
                     },
                     {
                     label: 'North',
                     data: [125, 110, 140, 130],
-                    backgroundColor: ["#70877F", "#70877F", "#70877F", "#70877F"]
+                    backgroundColor: ["#9FC1F1", "#9FC1F1", "#9FC1F1", "#9FC1F1"]
                     },
                     {
                     label: 'North-East',
                     data:[98, 105, 99, 88],
-                    backgroundColor: ["#5CAFAA", "#5CAFAA", "#5CAFAA", "#5CAFAA"]
+                    backgroundColor: ["#9FD6F1", "#9FD6F1", "#9FD6F1", "#9FD6F1"]
                     },
                     {
                     label: 'Central',
                     data:[121, 96, 121, 115],
-                    backgroundColor: ["#EF946C", "#EF946C", "#EF946C", "#EF946C"]
+                    backgroundColor: ["#28858C", "#28858C", "#28858C", "#28858C"]
                     }
                 ]
             },
