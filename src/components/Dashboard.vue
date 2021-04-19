@@ -12,7 +12,7 @@
         </div>
         <div class="row">
         <div id="line-chart" style="display: inline-block;">
-            <lineChart3></lineChart3>
+            <lineChart></lineChart>
         </div>
         <div id="bar-chart" style="display: inline-block;">
             <barChart></barChart>
@@ -68,11 +68,7 @@
 </template>
 
 <script>
-<<<<<<< HEAD
 import lineChart from './lineChart3.js'
-=======
-import lineChart3 from './lineChart3.js'
->>>>>>> 053b736194efcb99a6a596ef409ce6dc677816db
 import lineChart2 from './lineChart2.js'
 import barChart from './barChart.js'
 /*import scatterChart from './scatterChart.js'*/
@@ -106,7 +102,7 @@ export default {
         }
     },
     components: {
-        lineChart3,
+        lineChart,
         lineChart2,
         barChart,
         /*scatterChart,*/

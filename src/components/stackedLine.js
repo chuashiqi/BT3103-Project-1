@@ -26,6 +26,11 @@ export default {
                         label: 'East',
                         data: [80, 100, 85, 90],
                         borderColor: ["#5CAFAA"],
+                    },
+                    {
+                        label: 'Central',
+                        data: [75, 90, 101, 93],
+                        borderColor: ["#5CAFAA"],
                     }
                 ],
             },
