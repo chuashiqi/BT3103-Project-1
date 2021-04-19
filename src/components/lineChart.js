@@ -4,38 +4,21 @@ const { reactiveProp } = mixins
 export default {
     extends: Line,
     mixins: [reactiveProp],
+    props: ['options'],
     mounted () {
         this.renderLineChart();
     },
     methods: {
         renderLineChart: function(){
-            this.renderChart(this.datacollection, this.options);
+            this.renderChart(this.chartData, this.options);
         }
     },
-    data: function () {
-        return {
-            datacollection: {
-                labels: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-                datasets: [
-                    {
-                    label: 'Total Bottles Recycled Daily',
-                    data: [61, 48, 42, 51, 47, 56, 58],
-                    borderColor: ["#5CAFAA"],
-                    fill: false,
-                    }
-                ],
-            },
-            options: {
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero: true,
-                        }
-                    }]
-                },
-                responsive: true,
-                maintainAspectRatio: false,
-            }
-        }
-    },
+    
+    watch: {
+        chartData: function () {
+            this._chart.destroy();
+            this.renderLineChart();
+        },
+        deep: true
+    }
 }

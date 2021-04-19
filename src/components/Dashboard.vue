@@ -10,9 +10,6 @@
             of bottle you recycle daily (top-right), amount of bottle recycled by area,
             plastic waste recycling to temperature scatter plot, heatmaps of recycling progress)
         </p>
-        <div id="pie-chartMini" style="display: inline-blockl;">
-            <pieChart></pieChart>
-        </div>
         </div>
         <div class="row">
         <div id="line-chart" style="display: inline-block;">
@@ -26,7 +23,7 @@
             <DoughnutChart :chart-data="pieChartData"></DoughnutChart>
         </div>
         <div id="scatter-chart" style="display: inline-block;">
-            <scatterChart></scatterChart>
+            <StackedLine></StackedLine>
         </div>
         <div id="line-chart2" style="display: inline-block;">
             <lineChart2></lineChart2>
@@ -38,12 +35,12 @@
 </template>
 
 <script>
-import lineChart from './lineChart.js'
+import lineChart from './lineChart3.js'
 import lineChart2 from './lineChart2.js'
 import barChart from './barChart.js'
-import scatterChart from './scatterChart.js'
+/*import scatterChart from './scatterChart.js'*/
 import DoughnutChart from './doughnutChart.js'
-import PieChart from './pieChart.js'
+import StackedLine from './stackedLine.js'
 export default {
     data() {
         return {
@@ -75,9 +72,9 @@ export default {
         lineChart,
         lineChart2,
         barChart,
-        scatterChart,
+        /*scatterChart,*/
         DoughnutChart,
-        PieChart
+        StackedLine
     },
 }
 </script>
