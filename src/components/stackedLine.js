@@ -18,20 +18,15 @@ export default {
                 labels: ["January", "February", "March", "April"],
                 datasets: [
                     {
-                        label: 'West',
+                        label: 'No Recycling',
                         data: [100, 120, 95, 110],
-                        borderColor: ["#5CAFAA"],
+                        borderColor: ["#D36582"],
                     },
                     {
-                        label: 'East',
+                        label: 'Recycling',
                         data: [80, 100, 85, 90],
                         borderColor: ["#5CAFAA"],
                     },
-                    {
-                        label: 'Central',
-                        data: [75, 90, 101, 93],
-                        borderColor: ["#5CAFAA"],
-                    }
                 ],
             },
             options: {
