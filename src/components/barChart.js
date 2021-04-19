@@ -24,7 +24,7 @@ export default {
                     },
                     {
                     label: 'North',
-                    data:[103, 93, 140, 130],
+                    data:[125, 110, 140, 130],
                     backgroundColor: ["#70877F", "#70877F", "#70877F", "#70877F"]
                     },
                     {
