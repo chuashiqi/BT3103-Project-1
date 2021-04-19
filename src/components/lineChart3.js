@@ -34,7 +34,7 @@ export default {
                     }], 
                     xAxes: [{
                        ticks:  {
-                           autoskip: false,
+                           autoSkip: false,
                        }
                     }],
                 },
