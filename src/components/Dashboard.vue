@@ -1,14 +1,17 @@
 <template>
     <div id="container">
-        <div class="head">
+        <div id="head">
             <img width="70" height="70" align="left" src="../assets/dashboard.png"> 
+            <img width="190" height="80" align="right" src="../assets/applogo.jpg"> 
             <h1> RecyclEasy Dashboard </h1>
+            
         </div>
 
         <div class="row">
-        <div id="intro" style="display: inline-block; width: 90%">
+        <div id="intro" style="display: inline-block; width: 100%">
         <p> This dashboard showcases some key user statistics to identify and understand some recycling trends among the RecyclEasy users. 
-        Beyond user trends, the impact of the users' combined recycling efforts can also be visualizes.
+        </p>
+        <p>Beyond user trends, the impact of the users' combined recycling efforts can also be visualized.
         </p>
         </div>
 
@@ -30,7 +33,7 @@
         <table>
             <tr>
                 <th>Distribution of Brands among the recycled bottles</th>
-                <th>Impact of Recycling CO2 emissions</th>
+                <th>Impact of Recycling on CO2 emissions</th>
                 <th>Total reward redemptions by the users on a monthly basis</th>
             </tr>
         </table>
@@ -68,11 +71,11 @@ export default {
                         label: "Plastic Brand Distribution",
                         data: [20, 45, 25, 20, 5],
                         backgroundColor: [
-                            '#68F7D9',
-                            '#5ACCB4 ',
-                            '#4FAB98 ',
-                            '#489887 ',
-                            '#38786A',
+                            '#9FF1DC',
+                            '#9FE8F1',
+                            '#9FC1F1',
+                            '#9FD6F1',
+                            '#28858C',
                             ],
                     },
                 ]
@@ -99,11 +102,10 @@ export default {
 <style scoped>
 @import url('https://fonts.googleapis.com/css?family=Righteous');
 
-.head {
+#head {
   font-family: Righteous;
   overflow: hidden;
-  background-color: #5CAFAA;
-  padding: 10px 400px;
+  padding: 0px 15px;
   text-align: left;
 }
 
@@ -124,7 +126,7 @@ table, th, tr {
 
 #intro {
     font-family: Righteous;
-    font-size: 15px;
+    font-size: 16px;
     vertical-align: top;
     text-align: center;
 }
