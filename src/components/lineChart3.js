@@ -30,9 +30,13 @@ export default {
                     yAxes: [{
                         ticks: {
                             beginAtZero: true,
-                            autoskip: false,
                         }
-                    }]
+                    }], 
+                    xAxes: [{
+                       ticks:  {
+                           autoskip: false,
+                       }
+                    }],
                 },
                 responsive: true,
                 maintainAspectRatio: false,
