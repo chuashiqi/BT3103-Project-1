@@ -33,7 +33,7 @@
         <table>
             <tr>
                 <th>Distribution of Brands among the recycled bottles</th>
-                <th>Impact of Recycling on CO2 emissions</th>
+                <th>Impact of Recycling on CO2 emissions (in ppm)</th>
                 <th>Total reward redemptions by the users on a monthly basis</th>
             </tr>
         </table>
