@@ -20,12 +20,14 @@ export default {
                     {
                         label: 'No Recycling',
                         data: [100, 101, 100,103],
+                        fillColor: "#D36582",
                         borderColor: ["#D36582"],
                     },
                     {
                         label: 'Recycling',
                         data: [100, 95, 80, 76],
                         borderColor: ["#5CAFAA"],
+                        backgroundColor: "#9DE9D9",
                     },
                 ],
             },
